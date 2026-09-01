@@ -493,6 +493,10 @@ export default function App() {
               <div style="margin-top:4px;"><span style="background:#0e7a4b; color:white; padding:3px 10px; border-radius:999px; font-size:6.5px; font-weight:800;">Berlaku selama menjadi siswa</span></div>
             </div>
           </div>
+          <div style="position:absolute; bottom:6px; right:6px; background:white; border:1px solid #e5e7eb; border-radius:5px; padding:2px; display:flex; flex-direction:column; align-items:center; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+            <img src="${qrSrc}" style="width:13mm; height:13mm; object-fit:contain; display:block;" />
+            <div style="font-size:3.5px; font-weight:700; color:#666; margin-top:1px; line-height:1; letter-spacing:0.3px;">Scan preview</div>
+          </div>
           <div style="height:4px; background: linear-gradient(90deg, #0e7a4b, #f4b400, #0e7a4b);"></div>
         </div>
         <div class="card" style="padding:8px; font-size:5px; display:flex; flex-direction:column; background:white; border-radius:12px;">
@@ -516,16 +520,10 @@ export default function App() {
                 <div style="font-size:6.5px; font-weight:800; color:#0e7a4b; margin-top:4px;">Kepala Madrasah</div>
                 ${schoolData.nipKepala !== "-" ? `<div style="font-size:5px; font-family:monospace; color:#666; margin-top:1px;">${schoolData.nipKepala}</div>` : ""}
               </div>
-              <div style="width:100%; display:flex; gap:5px; align-items:stretch; margin-top:6px;">
-                <div style="flex:1; background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px; padding:4px; display:flex; flex-direction:column; justify-content:center; text-align:center;">
-                  <div style="font-size:5px; font-weight:700; letter-spacing:0.5px; color:#666;">KETERANGAN</div>
-                  <div style="font-size:6px; font-family:monospace; font-weight:700; color:#1a1a1a; word-break:break-all; line-height:1.1;">${s.noInduk}</div>
-                  <div style="font-size:5px; color:#777;">NSM: ${schoolData.nsm}</div>
-                </div>
-                <div style="flex-shrink:0; background:white; border:1px solid #e5e7eb; border-radius:6px; padding:3px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-                  <img src="${qrSrc}" style="width:16mm; height:16mm; object-fit:contain; display:block;" />
-                  <div style="font-size:4.5px; font-weight:700; color:#666; margin-top:1px; line-height:1;">Scan preview</div>
-                </div>
+              <div style="width:100%; background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px; padding:4px; display:flex; flex-direction:column; justify-content:center; text-align:center; margin-top:6px;">
+                <div style="font-size:5px; font-weight:700; letter-spacing:0.5px; color:#666;">KETERANGAN</div>
+                <div style="font-size:6px; font-family:monospace; font-weight:700; color:#1a1a1a; word-break:break-all; line-height:1.1;">${s.noInduk}</div>
+                <div style="font-size:5px; color:#777;">NSM: ${schoolData.nsm}</div>
               </div>
             </div>
           </div>

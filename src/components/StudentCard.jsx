@@ -109,6 +109,14 @@ export function CardFront({ siswa, school, scale = 1 }) {
         </div>
       </div>
 
+      {/* QR pojok kanan bawah depan — absolute tidak menggeser layout lain */}
+      <div className="absolute bottom-[6px] right-1.5 bg-white border border-gray-200 rounded-[5px] p-[2px] flex flex-col items-center shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
+        <div className="w-[13mm] h-[13mm] flex items-center justify-center">
+          <QRCodeSVG value={getPreviewUrl(siswa)} size={50} level="M" bgColor="#FFFFFF" fgColor="#000000" className="w-full h-full" />
+        </div>
+        <div className="text-[3.5px] font-bold text-gray-500 tracking-wide leading-none mt-[1px]">Scan preview</div>
+      </div>
+
       {/* Footer line */}
       <div className="h-[4px] bg-gradient-to-r from-[#0e7a4b] via-[#f4b400] to-[#0e7a4b]" />
     </div>
@@ -155,18 +163,10 @@ export function CardBack({ siswa, school }) {
             <div className="text-[6.5px] font-extrabold text-[#0e7a4b] mt-1.5">Kepala Madrasah</div>
             {sch.nipKepala !== "-" && <div className="text-[5px] font-mono text-gray-500 mt-0.5">{sch.nipKepala}</div>}
           </div>
-          <div className="w-full flex gap-1.5 items-stretch">
-            <div className="flex-1 bg-gray-50 border border-gray-200 rounded-lg p-1.5 flex flex-col justify-center">
-              <div className="text-[5px] font-bold tracking-widest text-gray-600">KETERANGAN</div>
-              <div className="text-[6px] font-mono font-bold text-[#1a1a1a] break-all leading-tight">{siswa.noInduk}</div>
-              <div className="text-[5px] text-gray-500">NSM: {sch.nsm}</div>
-            </div>
-            <div className="shrink-0 bg-white border border-gray-200 rounded-lg p-1 flex flex-col items-center justify-center">
-              <div className="w-[18mm] h-[18mm] flex items-center justify-center">
-                <QRCodeSVG value={getPreviewUrl(siswa)} size={68} level="M" bgColor="#FFFFFF" fgColor="#000000" className="w-full h-full" />
-              </div>
-              <div className="text-[4.5px] font-bold text-gray-600 tracking-wide leading-none mt-0.5">Scan preview</div>
-            </div>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-1.5 w-full">
+            <div className="text-[5px] font-bold tracking-widest text-gray-600">KETERANGAN</div>
+            <div className="text-[6px] font-mono font-bold text-[#1a1a1a] break-all leading-tight">{siswa.noInduk}</div>
+            <div className="text-[5px] text-gray-500">NSM: {sch.nsm}</div>
           </div>
         </div>
       </div>
