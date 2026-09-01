@@ -1,0 +1,35 @@
+export const school = {
+  nsm: "111233290134",
+  npsn: "60720147",
+  nama: "MI JAMIYATUL FALAH KEDUNGNENG",
+  yayasan: "YAYASAN PENDIDIKAN ISLAM JAMIYATUL FALAH",
+  akreditasi: "B",
+  alamat: "Jl. Pusponegoro No. 62 Kedungneng",
+  desa: "Kedungneng",
+  kecamatan: "Losari",
+  kabupaten: "Brebes",
+  provinsi: "Jawa Tengah",
+  kodePos: "52255",
+  telepon: "0858 7216 6251",
+  email: "mijafakedungneng@yahoo.co.id",
+  kepalaMadrasah: "AHMAD RIFA'I, S.Pd.I",
+  nipKepala: "-",
+  tahunPelajaran: "2025/2026",
+  masaBerlaku: "30 Juni 2026",
+  logoMijafa: "./logo-mijafa.jpg",
+  logoYayasan: "./logo-yayasan.jpg",
+  logoTutWuri: "./logo-tutwuri.png",
+  peraturan: [
+    "Kartu wajib dibawa setiap hari sekolah",
+    "Jika hilang segera lapor ke Tata Usaha",
+    "Kartu tidak boleh dipinjamkan kepada orang lain",
+    "Kartu ini adalah identitas resmi siswa MIJAFA",
+  ],
+};
+
+export const warnaIdentitas = {
+  hijau: "#0e7a4b",
+  gold: "#f4b400",
+  putih: "#ffffff",
+  hitam: "#1a1a1a",
+};

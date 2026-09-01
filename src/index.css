@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mijafa-green: #0e7a4b;
+  --color-mijafa-gold: #f4b400;
+  --color-mijafa-dark: #1a1a1a;
+}
+
+:root {
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+/* Print styles for kartu */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 5mm;
+  }
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-break {
+    page-break-after: always;
+  }
+}
+
+/* Kartu CR80: 85.6mm x 54mm */
+.card-cr80 {
+  width: 85.6mm;
+  height: 53.98mm;
+  overflow: hidden;
+}
+
+/* A4 grid helpers */
+@media print {
+  .a4-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 85.6mm);
+    grid-auto-rows: 53.98mm;
+    gap: 2mm;
+    justify-content: center;
+  }
+}
