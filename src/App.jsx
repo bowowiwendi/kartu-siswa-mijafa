@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { school as defaultSchool } from "./data/school";
 import { initialStudents } from "./data/students";
 import { CardFront, CardBack } from "./components/StudentCard";
@@ -305,7 +305,7 @@ export default function App() {
         @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
       </style></head><body>
       <div style="text-align:center; padding: 6px; font-size:10px; border-bottom:1px dashed #ccc; margin-bottom:4mm;">
-        ${schoolData.nama} — Cetak Kartu Pelajar — ${new Date().toLocaleDateString("id-ID")} — ${showPrint.length} siswa — Potong sesuai garis
+        ${schoolData.nama} — Cetak Kartu Pelajar — SATU LEMBAR (Depan & Belakang Berdampingan) — ${new Date().toLocaleDateString("id-ID")} — ${showPrint.length} siswa = ${Math.ceil(showPrint.length/5)} lembar A4 (5 siswa/lembar) — Potong sesuai garis
       </div>
       <div id="root"></div>
       <script>window.onload=()=>setTimeout(()=>window.print(), 500)</script>
@@ -320,7 +320,8 @@ export default function App() {
     const peraturanHtml = schoolData.peraturan.map((p) => `<li>${p}</li>`).join("");
     const logoMijafaUrl = new URL(schoolData.logoMijafa, window.location.href).href;
     const logoKemenagUrl = new URL(schoolData.logoKemenag || schoolData.logoTutWuri || schoolData.logoYayasan, window.location.href).href;
-    const cardsHtml = showPrint
+    // SATU LEMBAR: depan & belakang berdampingan per siswa (5 siswa = 10 sisi per lembar A4)
+    const pairHtml = showPrint
       .map(
         (s) => `
         <div class="card" style="position:relative; display:flex; flex-direction:column; background:white;">
@@ -354,13 +355,7 @@ export default function App() {
           </div>
           <div style="height:3px; background: linear-gradient(90deg, #0e7a4b, #f4b400, #0e7a4b);"></div>
         </div>
-      `
-      )
-      .join("");
-    const backHtml = showPrint
-      .map(
-        () => `
-        <div class="card" style="padding:6px; font-size:5px; display:flex; flex-direction:column;">
+        <div class="card" style="padding:6px; font-size:5px; display:flex; flex-direction:column; background:white;">
           <div style="font-size:6px; font-weight:700; color:#0e7a4b; border-bottom:1px solid #f4b400; padding-bottom:2px; margin-bottom:4px;">TATA TERTIB</div>
           <ol style="padding-left:12px; line-height:1.4; color:#444;">
             ${peraturanHtml}
@@ -375,12 +370,13 @@ export default function App() {
             <div style="font-weight:600; margin-top:8px;">${schoolData.kepalaMadrasah}</div>
             <div style="color:#0e7a4b; font-weight:700;">Kepala Madrasah</div>
           </div>
-        </div>`
+        </div>
+      `
       )
       .join("");
 
-    // We will produce two sections: depan then belakang
-    const full = `<div class="page">${cardsHtml}</div><div style="page-break-after:always;"></div><div class="page">${backHtml}</div>`;
+    // Satu lembar: depan & belakang berdampingan (2 kolom), potong tengah
+    const full = `<div class="page">${pairHtml}</div>`;
     w.document.body.innerHTML = w.document.body.innerHTML.replace('<div id="root"></div>', full);
     w.document.close();
   }, [showPrint, schoolData]);
@@ -818,15 +814,13 @@ export default function App() {
                 </button>
               </div>
             </div>
+            <div className="text-center text-xs text-gray-500 mb-3">SATU LEMBAR — Depan & Belakang berdampingan (5 siswa per lembar A4) — Potong sesuai garis putus</div>
             <div className="grid grid-cols-2 gap-4">
               {showPrint.map((s) => (
-                <CardFront key={s.noInduk} siswa={s} school={schoolData} />
-              ))}
-            </div>
-            <div className="my-6 border-t border-dashed" />
-            <div className="grid grid-cols-2 gap-4">
-              {showPrint.map((s) => (
-                <CardBack key={s.noInduk + "-back"} siswa={s} school={schoolData} />
+                <React.Fragment key={s.noInduk}>
+                  <CardFront siswa={s} school={schoolData} />
+                  <CardBack siswa={s} school={schoolData} />
+                </React.Fragment>
               ))}
             </div>
           </div>
