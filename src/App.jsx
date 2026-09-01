@@ -3,6 +3,7 @@ import { school as defaultSchool } from "./data/school";
 import { initialStudents } from "./data/students";
 import { CardFront, CardBack } from "./components/StudentCard";
 import * as XLSX from "xlsx";
+import html2canvas from "html2canvas";
 
 const KELAS_OPTIONS = ["1", "2", "3", "4", "5", "6"];
 const STORAGE_KEY = "mijafa-students-v2";
@@ -63,6 +64,8 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false);
   const [toast, setToast] = useState("");
   const fileRef = useRef(null);
+  const printRef = useRef(null);
+  const previewCardRef = useRef(null);
 
   // form state
   const emptyForm = {
@@ -291,6 +294,53 @@ export default function App() {
     setShowPrint(toPrint);
   }
 
+  async function handleDownloadJPG() {
+    const toPrint = selected.size ? students.filter((s) => selected.has(s.noInduk)) : filtered;
+    if (toPrint.length === 0) {
+      notify("Tidak ada data untuk diunduh");
+      return;
+    }
+    // pastikan area cetak dirender
+    setShowPrint(toPrint);
+    notify("Menyiapkan JPG...");
+    setTimeout(async () => {
+      const el = printRef.current;
+      if (!el) {
+        notify("Gagal capture JPG");
+        return;
+      }
+      try {
+        const canvas = await html2canvas(el, { scale: 2, useCORS: true, allowTaint: false, backgroundColor: "#ffffff", logging: false });
+        const link = document.createElement("a");
+        link.download = `kartu-MIJAFA-${new Date().toISOString().slice(0, 10)}-${toPrint.length}siswa.jpg`;
+        link.href = canvas.toDataURL("image/jpeg", 0.92);
+        link.click();
+        notify(`JPG ${toPrint.length} siswa diunduh`);
+      } catch (e) {
+        notify("Gagal download JPG: " + e.message);
+      }
+    }, 600);
+  }
+
+  async function handleDownloadSingleJPG(siswa) {
+    const el = previewCardRef.current;
+    if (!el) {
+      notify("Gagal capture kartu");
+      return;
+    }
+    try {
+      const canvas = await html2canvas(el, { scale: 3, useCORS: true, allowTaint: false, backgroundColor: "#ffffff", logging: false });
+      const link = document.createElement("a");
+      const safeName = (siswa.nama || "kartu").replace(/[^a-zA-Z0-9]/g, "_").slice(0, 20);
+      link.download = `${safeName}-${siswa.nisn || siswa.noInduk}.jpg`;
+      link.href = canvas.toDataURL("image/jpeg", 0.95);
+      link.click();
+      notify("JPG kartu diunduh");
+    } catch (e) {
+      notify("Gagal download JPG: " + e.message);
+    }
+  }
+
   // print window - sinkron dengan pengaturan (schoolData), tanpa QR/KELAS/TP, masa berlaku permanen
   useEffect(() => {
     if (!showPrint) return;
@@ -460,6 +510,14 @@ export default function App() {
             className="bg-[#0e7a4b] text-white px-4 py-2.5 rounded-xl text-sm font-bold hover:bg-[#0a5c38] disabled:opacity-50 flex items-center gap-2"
           >
             🖨️ Cetak {selectedCount ? `(${selectedCount})` : `(${filtered.length})`}
+          </button>
+          <button
+            onClick={handleDownloadJPG}
+            disabled={filtered.length === 0}
+            className="bg-white border border-[#0e7a4b] text-[#0e7a4b] px-4 py-2.5 rounded-xl text-sm font-bold hover:bg-[#f0fdf4] disabled:opacity-50 flex items-center gap-2"
+            title="Download semua kartu terpilih sebagai JPG (satu lembar A4)"
+          >
+            📷 JPG {selectedCount ? `(${selectedCount})` : `(${filtered.length})`}
           </button>
           {selectedCount > 0 && (
             <button
@@ -700,6 +758,12 @@ export default function App() {
               <h3 className="font-bold text-lg">Preview Kartu — {preview.nama} • Kelas {preview.kelas}</h3>
               <div className="flex gap-2">
                 <button
+                  onClick={() => handleDownloadSingleJPG(preview)}
+                  className="bg-white border border-[#0e7a4b] text-[#0e7a4b] px-4 py-2 rounded-xl text-sm font-bold hover:bg-[#f0fdf4]"
+                >
+                  📷 Download JPG
+                </button>
+                <button
                   onClick={() => {
                     setSelected(new Set([preview.noInduk]));
                     setPreview(null);
@@ -714,7 +778,7 @@ export default function App() {
                 </button>
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row gap-8 justify-center items-center bg-white p-8 rounded-xl border">
+            <div ref={previewCardRef} className="flex flex-col lg:flex-row gap-8 justify-center items-center bg-white p-8 rounded-xl border">
               <div className="flex flex-col items-center gap-2">
                 <span className="text-xs font-bold tracking-widest text-[#0e7a4b]">DEPAN</span>
                 <CardFront siswa={preview} school={schoolData} />
@@ -811,6 +875,9 @@ export default function App() {
             <div className="flex justify-between items-center mb-4 border-b pb-3">
               <h2 className="font-bold">Pratinjau Cetak — {showPrint.length} kartu • Popup diblokir? Cetak dari sini</h2>
               <div className="flex gap-2">
+                <button onClick={handleDownloadJPG} className="bg-white border border-[#0e7a4b] text-[#0e7a4b] px-4 py-2 rounded-lg text-sm font-bold hover:bg-[#f0fdf4]">
+                  📷 Download JPG
+                </button>
                 <button onClick={() => window.print()} className="bg-[#0e7a4b] text-white px-4 py-2 rounded-lg text-sm font-bold">
                   🖨️ Print (Ctrl+P)
                 </button>
@@ -820,7 +887,7 @@ export default function App() {
               </div>
             </div>
             <div className="text-center text-xs text-gray-500 mb-3">SATU LEMBAR — Depan & Belakang berdampingan (4 siswa per lembar A4, kartu 88×56mm) — Potong sesuai garis putus</div>
-            <div className="grid grid-cols-2 gap-4">
+            <div ref={printRef} className="grid grid-cols-2 gap-4 bg-white p-2">
               {showPrint.map((s) => (
                 <React.Fragment key={s.noInduk}>
                   <CardFront siswa={s} school={schoolData} />
