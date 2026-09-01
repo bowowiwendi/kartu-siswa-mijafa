@@ -297,15 +297,15 @@ export default function App() {
     const html = `
       <html><head><meta charset="utf-8"><title>Cetak Kartu - MIJAFA</title>
       <style>
-        @page { size: A4 portrait; margin: 5mm; }
+        @page { size: A4 portrait; margin: 3mm; }
         * { box-sizing: border-box; margin:0; padding:0; }
         body { font-family: Poppins, sans-serif; background: white; }
-        .page { display: grid; grid-template-columns: repeat(2, 85.6mm); grid-auto-rows: 53.98mm; gap: 4mm; justify-content: center; padding: 5mm; }
-        .card { width: 85.6mm; height: 53.98mm; border: 1px solid #ddd; border-radius: 8px; overflow:hidden; page-break-inside: avoid; }
+        .page { display: grid; grid-template-columns: repeat(2, 88mm); grid-auto-rows: 56mm; gap: 3mm; justify-content: center; padding: 3mm; }
+        .card { width: 88mm; height: 56mm; border: 1px solid #ddd; border-radius: 12px; overflow:hidden; page-break-inside: avoid; }
         @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
       </style></head><body>
       <div style="text-align:center; padding: 6px; font-size:10px; border-bottom:1px dashed #ccc; margin-bottom:4mm;">
-        ${schoolData.nama} — Cetak Kartu Pelajar — SATU LEMBAR (Depan & Belakang Berdampingan) — ${new Date().toLocaleDateString("id-ID")} — ${showPrint.length} siswa = ${Math.ceil(showPrint.length/5)} lembar A4 (5 siswa/lembar) — Potong sesuai garis
+        ${schoolData.nama} — Cetak Kartu Pelajar — SATU LEMBAR (Depan & Belakang Berdampingan) — ${new Date().toLocaleDateString("id-ID")} — ${showPrint.length} siswa = ${Math.ceil(showPrint.length/4)} lembar A4 (4 siswa/lembar, kartu 88×56mm) — Potong sesuai garis
       </div>
       <div id="root"></div>
       <script>window.onload=()=>setTimeout(()=>window.print(), 500)</script>
@@ -320,62 +320,67 @@ export default function App() {
     const peraturanHtml = schoolData.peraturan.map((p) => `<li>${p}</li>`).join("");
     const logoMijafaUrl = new URL(schoolData.logoMijafa, window.location.href).href;
     const logoKemenagUrl = new URL(schoolData.logoKemenag || schoolData.logoTutWuri || schoolData.logoYayasan, window.location.href).href;
-    // SATU LEMBAR: depan & belakang berdampingan per siswa (5 siswa = 10 sisi per lembar A4)
+    // SATU LEMBAR: depan & belakang berdampingan per siswa (4 siswa = 8 sisi per lembar A4, kartu 88x56mm lebih besar)
     const pairHtml = showPrint
       .map(
         (s) => `
-        <div class="card" style="position:relative; display:flex; flex-direction:column; background:white;">
-          <div style="background:#0e7a4b; color:white; padding:4px 6px; display:flex; align-items:center; gap:6px; font-size:6px;">
-            <img src="${logoMijafaUrl}" style="width:22px; height:22px; border-radius:50%; object-fit:contain; background:transparent;" onerror="this.style.display='none'" />
+        <div class="card" style="position:relative; display:flex; flex-direction:column; background:white; border-radius:12px;">
+          <div style="background:#0e7a4b; color:white; padding:5px 8px; display:flex; align-items:center; gap:8px; font-size:6px;">
+            <img src="${logoMijafaUrl}" style="width:26px; height:26px; border-radius:50%; object-fit:contain; background:transparent;" onerror="this.style.display='none'" />
             <div style="flex:1; text-align:center; line-height:1;">
-              <div style="font-size:5px; letter-spacing:0.5px;">${schoolData.yayasan}</div>
-              <div style="font-size:7px; font-weight:700;">${schoolData.nama}</div>
-              <div style="font-size:4.5px; opacity:0.9;">${schoolData.alamat} • Terakreditasi ${schoolData.akreditasi}</div>
+              <div style="font-size:6px; letter-spacing:0.6px; font-weight:600; opacity:0.95;">${schoolData.yayasan}</div>
+              <div style="font-size:8.5px; font-weight:800;">${schoolData.nama}</div>
+              <div style="font-size:5.5px; opacity:0.9;">${schoolData.alamat} • Terakreditasi ${schoolData.akreditasi}</div>
             </div>
-            <img src="${logoKemenagUrl}" style="width:22px; height:22px; border-radius:50%; object-fit:contain; background:transparent;" onerror="this.style.display='none'" />
+            <img src="${logoKemenagUrl}" style="width:26px; height:26px; border-radius:50%; object-fit:contain; background:transparent;" onerror="this.style.display='none'" />
           </div>
-          <div style="background:#f4b400; text-align:center; font-size:6px; font-weight:700; padding:2px;">KARTU PELAJAR</div>
-          <div style="flex:1; display:flex; gap:8px; padding:6px;">
-            <div style="width:22mm; display:flex; flex-direction:column; align-items:center;">
-              <div style="width:100%; height:30mm; background:#f3f4f6; border:2px solid #0e7a4b; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:8px; color:#999; overflow:hidden;">
+          <div style="background:#f4b400; text-align:center; font-size:7px; font-weight:800; padding:3px; letter-spacing:1px;">KARTU PELAJAR</div>
+          <div style="flex:1; display:flex; gap:10px; padding:10px;">
+            <div style="width:24mm; display:flex; flex-direction:column; align-items:center;">
+              <div style="width:100%; height:32mm; background:#f3f4f6; border:2.5px solid #0e7a4b; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:9px; color:#999; overflow:hidden;">
                 ${s.foto ? `<img src="${s.foto}" style="width:100%; height:100%; object-fit:cover;" />` : "FOTO 3×4"}
               </div>
             </div>
-            <div style="flex:1; font-size:6px; line-height:1.3;">
-              <div style="font-size:5px; color:#0e7a4b; font-weight:600;">NAMA</div>
-              <div style="font-size:8px; font-weight:700; text-transform:uppercase;">${s.nama}</div>
-              <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:4px;">
-                <div><div style="font-size:4px; color:#888;">NISN</div><div style="font-weight:700; font-family:monospace;">${s.nisn}</div></div>
-                <div><div style="font-size:4px; color:#888;">NO INDUK</div><div style="font-weight:700; font-family:monospace; font-size:5px;">${s.noInduk}</div></div>
-                <div style="grid-column: span 2;"><div style="font-size:4px; color:#888;">TTL</div><div style="font-weight:600;">${s.tempatLahir}, ${s.tanggalLahir}</div></div>
-                <div style="grid-column: span 2;"><div style="font-size:4px; color:#888;">ALAMAT</div><div>${s.alamat}</div></div>
+            <div style="flex:1; font-size:6px; line-height:1.3; display:flex; flex-direction:column; justify-content:center; gap:2px;">
+              <div>
+                <div style="font-size:6px; color:#0e7a4b; font-weight:800; letter-spacing:1px;">NAMA LENGKAP</div>
+                <div style="font-size:11px; font-weight:800; text-transform:uppercase; line-height:1.1; color:#1a1a1a;">${s.nama}</div>
               </div>
-              <div style="margin-top:6px;"><span style="background:#0e7a4b; color:white; padding:2px 8px; border-radius:999px; font-size:5px; font-weight:700;">Berlaku selama menjadi siswa</span></div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:2px;">
+                <div><div style="font-size:6px; color:#888; font-weight:700;">NISN</div><div style="font-weight:800; font-family:monospace; font-size:8px; color:#1a1a1a;">${s.nisn}</div></div>
+                <div><div style="font-size:6px; color:#888; font-weight:700;">NO INDUK</div><div style="font-weight:800; font-family:monospace; font-size:7px; color:#1a1a1a;">${s.noInduk}</div></div>
+                <div style="grid-column: span 2;"><div style="font-size:6px; color:#888; font-weight:700;">TTL</div><div style="font-weight:700; font-size:7.5px; color:#1a1a1a;">${s.tempatLahir}, ${s.tanggalLahir}</div></div>
+                <div style="grid-column: span 2;"><div style="font-size:6px; color:#888; font-weight:700;">ALAMAT</div><div style="font-weight:600; font-size:7px; color:#1a1a1a;">${s.alamat}</div></div>
+              </div>
+              <div style="margin-top:4px;"><span style="background:#0e7a4b; color:white; padding:3px 10px; border-radius:999px; font-size:6.5px; font-weight:800;">Berlaku selama menjadi siswa</span></div>
             </div>
           </div>
-          <div style="height:3px; background: linear-gradient(90deg, #0e7a4b, #f4b400, #0e7a4b);"></div>
+          <div style="height:4px; background: linear-gradient(90deg, #0e7a4b, #f4b400, #0e7a4b);"></div>
         </div>
-        <div class="card" style="padding:6px; font-size:5px; display:flex; flex-direction:column; background:white;">
-          <div style="font-size:6px; font-weight:700; color:#0e7a4b; border-bottom:1px solid #f4b400; padding-bottom:2px; margin-bottom:4px;">TATA TERTIB</div>
-          <ol style="padding-left:12px; line-height:1.4; color:#444;">
+        <div class="card" style="padding:10px; font-size:5px; display:flex; flex-direction:column; background:white; border-radius:12px;">
+          <div style="font-size:7.5px; font-weight:800; color:#0e7a4b; border-bottom:2px solid #f4b400; padding-bottom:3px; margin-bottom:6px; letter-spacing:1px;">TATA TERTIB & PERATURAN</div>
+          <ol style="padding-left:14px; line-height:1.5; color:#222; font-size:6.5px; font-weight:500;">
             ${peraturanHtml}
           </ol>
-          <div style="margin-top:6px; background:#f0fdf4; border:1px solid #ccebd9; border-radius:4px; padding:4px; font-size:5px;">
-            <div style="font-weight:700; color:#0e7a4b;">ALAMAT SEKOLAH</div>
-            <div>${schoolData.alamat}, ${schoolData.desa}, Kec. ${schoolData.kecamatan}, Kab. ${schoolData.kabupaten} ${schoolData.kodePos}<br/>Telp. ${schoolData.telepon} • ${schoolData.email}</div>
+          <div style="margin-top:8px; background:#f0fdf4; border:1px solid #ccebd9; border-radius:8px; padding:6px; font-size:6px;">
+            <div style="font-weight:800; color:#0e7a4b; font-size:6px;">ALAMAT SEKOLAH</div>
+            <div style="font-size:6px; color:#333; font-weight:500;">${schoolData.alamat}, ${schoolData.desa}, Kec. ${schoolData.kecamatan}, Kab. ${schoolData.kabupaten} ${schoolData.kodePos}<br/>Telp. ${schoolData.telepon} • ${schoolData.email}</div>
           </div>
-          <div style="flex:1;"></div>
-          <div style="text-align:center; font-size:5px; margin-top:4px;">
-            <div>Kedungneng, ${new Date().getFullYear()}</div>
-            <div style="font-weight:600; margin-top:8px;">${schoolData.kepalaMadrasah}</div>
-            <div style="color:#0e7a4b; font-weight:700;">Kepala Madrasah</div>
+          <div style="flex:1; min-height:6px;"></div>
+          <div style="text-align:center; font-size:6px; margin-top:6px;">
+            <div style="color:#666; font-size:6px;">Kedungneng, ${new Date().getFullYear()}</div>
+            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; margin-top:4px;">
+              <div style="font-size:6px; font-weight:700; color:#1a1a1a;">${schoolData.kepalaMadrasah}</div>
+              <div style="width:80px; height:52px; border-bottom:2px dashed #bbb; display:flex; align-items:center; justify-content:center; font-size:12px; opacity:0.25; margin-top:2px;">✍️</div>
+              <div style="font-size:6.5px; font-weight:800; color:#0e7a4b; margin-top:4px;">Kepala Madrasah</div>
+            </div>
           </div>
         </div>
       `
       )
       .join("");
 
-    // Satu lembar: depan & belakang berdampingan (2 kolom), potong tengah
+    // Satu lembar: depan & belakang berdampingan (2 kolom), potong tengah - 4 siswa/lembar dengan kartu 56mm
     const full = `<div class="page">${pairHtml}</div>`;
     w.document.body.innerHTML = w.document.body.innerHTML.replace('<div id="root"></div>', full);
     w.document.close();
@@ -814,7 +819,7 @@ export default function App() {
                 </button>
               </div>
             </div>
-            <div className="text-center text-xs text-gray-500 mb-3">SATU LEMBAR — Depan & Belakang berdampingan (5 siswa per lembar A4) — Potong sesuai garis putus</div>
+            <div className="text-center text-xs text-gray-500 mb-3">SATU LEMBAR — Depan & Belakang berdampingan (4 siswa per lembar A4, kartu 88×56mm) — Potong sesuai garis putus</div>
             <div className="grid grid-cols-2 gap-4">
               {showPrint.map((s) => (
                 <React.Fragment key={s.noInduk}>
