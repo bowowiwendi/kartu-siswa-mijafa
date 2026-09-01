@@ -66,6 +66,7 @@ export default function App() {
   const fileRef = useRef(null);
   const printRef = useRef(null);
   const previewCardRef = useRef(null);
+  const bulkExportRef = useRef(null);
 
   // form state
   const emptyForm = {
@@ -300,44 +301,54 @@ export default function App() {
       notify("Tidak ada data untuk diunduh");
       return;
     }
-    // pastikan area cetak dirender
-    setShowPrint(toPrint);
-    notify("Menyiapkan JPG...");
-    setTimeout(async () => {
-      const el = printRef.current;
-      if (!el) {
-        notify("Gagal capture JPG");
-        return;
-      }
-      try {
-        const canvas = await html2canvas(el, { scale: 2, useCORS: true, allowTaint: false, backgroundColor: "#ffffff", logging: false });
-        const link = document.createElement("a");
-        link.download = `kartu-MIJAFA-${new Date().toISOString().slice(0, 10)}-${toPrint.length}siswa.jpg`;
-        link.href = canvas.toDataURL("image/jpeg", 0.92);
-        link.click();
-        notify(`JPG ${toPrint.length} siswa diunduh`);
-      } catch (e) {
-        notify("Gagal download JPG: " + e.message);
-      }
-    }, 600);
+    if (toPrint.length > 12) {
+      notify(`Terlalu banyak (${toPrint.length}), akan download 12 pertama. Pilih max 12 atau filter per kelas.`);
+    }
+    const el = bulkExportRef.current;
+    if (!el) {
+      notify("Gagal capture JPG - elemen tidak siap");
+      return;
+    }
+    try {
+      notify("Menyiapkan JPG...");
+      // tunggu render update jika baru ganti seleksi
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+      const canvas = await html2canvas(el, { scale: 2, useCORS: true, allowTaint: false, backgroundColor: "#ffffff", logging: false, imageTimeout: 8000 });
+      const link = document.createElement("a");
+      const count = Math.min(toPrint.length, 12);
+      link.download = `kartu-MIJAFA-${new Date().toISOString().slice(0, 10)}-${count}siswa.jpg`;
+      link.href = canvas.toDataURL("image/jpeg", 0.92);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      notify(`JPG ${count} siswa diunduh${toPrint.length > 12 ? " (12 pertama)" : ""}`);
+    } catch (e) {
+      console.error(e);
+      notify("Gagal download JPG: " + (e.message || String(e)));
+    }
   }
 
   async function handleDownloadSingleJPG(siswa) {
     const el = previewCardRef.current;
     if (!el) {
-      notify("Gagal capture kartu");
+      notify("Gagal capture kartu - buka preview dulu");
       return;
     }
     try {
-      const canvas = await html2canvas(el, { scale: 3, useCORS: true, allowTaint: false, backgroundColor: "#ffffff", logging: false });
+      notify("Menyiapkan JPG...");
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+      const canvas = await html2canvas(el, { scale: 3, useCORS: true, allowTaint: false, backgroundColor: "#ffffff", logging: false, imageTimeout: 5000 });
       const link = document.createElement("a");
       const safeName = (siswa.nama || "kartu").replace(/[^a-zA-Z0-9]/g, "_").slice(0, 20);
       link.download = `${safeName}-${siswa.nisn || siswa.noInduk}.jpg`;
       link.href = canvas.toDataURL("image/jpeg", 0.95);
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
       notify("JPG kartu diunduh");
     } catch (e) {
-      notify("Gagal download JPG: " + e.message);
+      console.error(e);
+      notify("Gagal download JPG: " + (e.message || String(e)));
     }
   }
 
@@ -898,6 +909,17 @@ export default function App() {
           </div>
         </div>
       )}
+      {/* Hidden offscreen export for JPG bulk - selalu dirender agar download tanpa harus buka cetak */}
+      <div style={{ position: "fixed", left: "-9999px", top: 0, width: "210mm", background: "white", padding: "3mm", pointerEvents: "none" }} aria-hidden="true">
+        <div ref={bulkExportRef} className="grid grid-cols-2 gap-3 bg-white">
+          {(selected.size ? students.filter((s) => selected.has(s.noInduk)) : filtered).slice(0, 12).map((s) => (
+            <React.Fragment key={s.noInduk}>
+              <CardFront siswa={s} school={schoolData} />
+              <CardBack siswa={s} school={schoolData} />
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
