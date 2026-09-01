@@ -64,6 +64,8 @@ export default function App() {
   const [showPrint, setShowPrint] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [toast, setToast] = useState("");
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
   const fileRef = useRef(null);
   const printRef = useRef(null);
   const previewCardRef = useRef(null);
@@ -108,12 +110,21 @@ export default function App() {
     return c;
   }, [students]);
 
+  // pagination — 10 default, reset saat filter/search/pageSize berubah
+  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const paginated = useMemo(() => {
+    const start = (page - 1) * pageSize;
+    return filtered.slice(start, start + pageSize);
+  }, [filtered, page, pageSize]);
+  useEffect(() => { setPage(1); }, [kelasFilter, search, pageSize]);
+  useEffect(() => { if (page > totalPages) setPage(totalPages); }, [totalPages, page]);
+
   function notify(msg) {
     setToast(msg);
     setTimeout(() => setToast(""), 3000);
   }
 
-  // ceklis pilihan — fixed: tidak lagi bandingkan size saja, tapi cek per item filtered
+  // ceklis pilihan — fixed + pagination aware
   function toggleSelect(id) {
     const n = new Set(selected);
     if (n.has(id)) n.delete(id);
@@ -121,8 +132,21 @@ export default function App() {
     setSelected(n);
   }
   function toggleSelectAll() {
-    const allSelected = filtered.length > 0 && filtered.every((s) => selected.has(s.noInduk));
-    if (allSelected) {
+    // header checkbox: pilih/batal pilih halaman ini saja (paginated)
+    const allPageSelected = paginated.length > 0 && paginated.every((s) => selected.has(s.noInduk));
+    if (allPageSelected) {
+      const n = new Set(selected);
+      paginated.forEach((s) => n.delete(s.noInduk));
+      setSelected(n);
+    } else {
+      const n = new Set(selected);
+      paginated.forEach((s) => n.add(s.noInduk));
+      setSelected(n);
+    }
+  }
+  function toggleSelectAllFiltered() {
+    const allFiltered = filtered.length > 0 && filtered.every((s) => selected.has(s.noInduk));
+    if (allFiltered) {
       const n = new Set(selected);
       filtered.forEach((s) => n.delete(s.noInduk));
       setSelected(n);
@@ -135,9 +159,11 @@ export default function App() {
   // indeterminate & sinkronisasi selected saat data/ filter berubah
   const allFilteredSelected = filtered.length > 0 && filtered.every((s) => selected.has(s.noInduk));
   const someFilteredSelected = filtered.some((s) => selected.has(s.noInduk));
+  const allPageSelected = paginated.length > 0 && paginated.every((s) => selected.has(s.noInduk));
+  const somePageSelected = paginated.some((s) => selected.has(s.noInduk));
   useEffect(() => {
-    if (selectAllRef.current) selectAllRef.current.indeterminate = !allFilteredSelected && someFilteredSelected;
-  }, [allFilteredSelected, someFilteredSelected]);
+    if (selectAllRef.current) selectAllRef.current.indeterminate = !allPageSelected && somePageSelected;
+  }, [allPageSelected, somePageSelected]);
   // bersihkan selected yang sudah tidak ada di students (misal setelah hapus)
   useEffect(() => {
     const ids = new Set(students.map((s) => s.noInduk));
@@ -651,7 +677,7 @@ export default function App() {
               <thead className="bg-gray-50 text-gray-600 text-xs uppercase tracking-wide">
                 <tr>
                   <th className="p-3 w-10">
-                    <input ref={selectAllRef} type="checkbox" checked={allFilteredSelected} onChange={toggleSelectAll} title={allFilteredSelected ? "Batal pilih semua (filter ini)" : someFilteredSelected ? "Pilih semua (filter ini) - sebagian terpilih" : "Pilih semua (filter ini)"} />
+                    <input ref={selectAllRef} type="checkbox" checked={allPageSelected} onChange={toggleSelectAll} title={allPageSelected ? "Batal pilih halaman ini" : somePageSelected ? "Pilih halaman ini - sebagian terpilih" : "Pilih semua di halaman ini"} />
                   </th>
                   <th className="p-3 text-left">No</th>
                   <th className="p-3 text-left">Foto</th>
@@ -669,13 +695,19 @@ export default function App() {
                       Tidak ada data. Coba ganti filter atau import Excel.
                     </td>
                   </tr>
+                ) : paginated.length === 0 ? (
+                  <tr>
+                    <td colSpan={8} className="p-12 text-center text-gray-400">
+                      Halaman kosong. <button onClick={() => setPage(1)} className="text-[#0e7a4b] font-semibold hover:underline">Kembali ke halaman 1</button>
+                    </td>
+                  </tr>
                 ) : (
-                  filtered.map((s, i) => (
+                  paginated.map((s, i) => (
                     <tr key={s.noInduk} className={`hover:bg-[#f0fdf4] ${selected.has(s.noInduk) ? "bg-[#ecfdf5]" : ""}`}>
                       <td className="p-3">
                         <input type="checkbox" checked={selected.has(s.noInduk)} onChange={() => toggleSelect(s.noInduk)} />
                       </td>
-                      <td className="p-3 text-gray-500">{i + 1}</td>
+                      <td className="p-3 text-gray-500">{(page - 1) * pageSize + i + 1}</td>
                       <td className="p-3">
                         <div className="w-10 h-12 rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
                           {s.foto ? <img src={s.foto} alt={s.nama} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">👤</div>}
@@ -720,11 +752,54 @@ export default function App() {
               </tbody>
             </table>
           </div>
-          <div className="px-4 py-3 bg-gray-50 border-t text-xs text-gray-500 flex flex-wrap gap-2 justify-between">
+          <div className="px-4 py-2 bg-gray-50 border-t text-xs text-gray-600 flex flex-wrap gap-2 justify-between items-center">
             <span>
-              Menampilkan {filtered.length} dari {students.length} siswa • Centang untuk cetak massal • Ukuran kartu CR80 (85.6×54mm) • 10 kartu / halaman A4
+              Menampilkan {filtered.length === 0 ? 0 : (page - 1) * pageSize + 1}-{Math.min(page * pageSize, filtered.length)} dari {filtered.length} (total {students.length}) • Halaman {page}/{totalPages} • Centang untuk cetak massal
             </span>
-            <span className="hidden md:inline">💡 Tip: Klik Preview untuk lihat desain kartu depan-belakang sebelum cetak</span>
+            <div className="flex items-center gap-2">
+              {!allFilteredSelected && filtered.length > 0 && (
+                <button onClick={toggleSelectAllFiltered} className="text-xs bg-white border border-[#0e7a4b] text-[#0e7a4b] px-3 py-1.5 rounded-lg font-semibold hover:bg-[#f0fdf4]">
+                  {allFilteredSelected ? "Batal pilih semua" : `Pilih semua ${filtered.length} hasil filter`}
+                </button>
+              )}
+              <span className="hidden md:inline text-gray-400">Ukuran kartu 88×56mm</span>
+            </div>
+          </div>
+          {/* Pagination bar */}
+          <div className="px-4 py-3 bg-white border-t flex flex-wrap gap-3 justify-between items-center">
+            <div className="flex items-center gap-2 text-sm">
+              <span className="text-gray-600 text-xs">Baris per halaman:</span>
+              <select value={pageSize} onChange={(e) => setPageSize(Number(e.target.value))} className="border border-gray-200 rounded-lg px-2 py-1.5 text-sm bg-white">
+                <option value={10}>10</option>
+                <option value={25}>25</option>
+                <option value={50}>50</option>
+                <option value={100}>100</option>
+              </select>
+              <span className="text-xs text-gray-500 hidden sm:inline">• {filtered.length} data • {selectedCount} dipilih</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page <= 1} className="px-3 py-1.5 rounded-lg border border-gray-200 text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-50">
+                ‹ Sebelumnya
+              </button>
+              {(() => {
+                const pages = [];
+                const maxBtn = 5;
+                let start = Math.max(1, page - Math.floor(maxBtn / 2));
+                let end = Math.min(totalPages, start + maxBtn - 1);
+                if (end - start + 1 < maxBtn) start = Math.max(1, end - maxBtn + 1);
+                for (let p = start; p <= end; p++) {
+                  pages.push(
+                    <button key={p} onClick={() => setPage(p)} className={`w-8 h-8 rounded-lg text-sm font-bold ${p === page ? "bg-[#0e7a4b] text-white" : "border border-gray-200 hover:bg-gray-50 text-gray-700"}`}>
+                      {p}
+                    </button>
+                  );
+                }
+                return pages;
+              })()}
+              <button onClick={() => setPage((p) => Math.min(totalPages, p + 1))} disabled={page >= totalPages} className="px-3 py-1.5 rounded-lg border border-gray-200 text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-50">
+                Selanjutnya ›
+              </button>
+            </div>
           </div>
         </div>
 
