@@ -4,6 +4,7 @@ import { initialStudents } from "./data/students";
 import { CardFront, CardBack } from "./components/StudentCard";
 import * as XLSX from "xlsx";
 import html2canvas from "html2canvas";
+import { domToJpeg } from "modern-screenshot";
 
 const KELAS_OPTIONS = ["1", "2", "3", "4", "5", "6"];
 const STORAGE_KEY = "mijafa-students-v2";
@@ -295,6 +296,23 @@ export default function App() {
     setShowPrint(toPrint);
   }
 
+  // helper: fallback oklch -> rgb untuk html2canvas (jika modern-screenshot gagal)
+  function fixOklchForHtml2Canvas(clonedDoc) {
+    try {
+      const all = clonedDoc.querySelectorAll("*");
+      all.forEach((el) => {
+        const cs = window.getComputedStyle(el);
+        // paksa inline rgb agar html2canvas tidak parse oklch dari stylesheet
+        if (cs.color && cs.color.includes("oklch")) el.style.color = cs.color;
+        else if (cs.color) el.style.color = cs.color;
+        if (cs.backgroundColor) el.style.backgroundColor = cs.backgroundColor;
+        if (cs.borderColor) el.style.borderColor = cs.borderColor;
+        if (cs.borderTopColor) el.style.borderTopColor = cs.borderTopColor;
+        if (cs.borderBottomColor) el.style.borderBottomColor = cs.borderBottomColor;
+      });
+    } catch {}
+  }
+
   async function handleDownloadJPG() {
     const toPrint = selected.size ? students.filter((s) => selected.has(s.noInduk)) : filtered;
     if (toPrint.length === 0) {
@@ -311,20 +329,35 @@ export default function App() {
     }
     try {
       notify("Menyiapkan JPG...");
-      // tunggu render update jika baru ganti seleksi
       await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-      const canvas = await html2canvas(el, { scale: 2, useCORS: true, allowTaint: false, backgroundColor: "#ffffff", logging: false, imageTimeout: 8000 });
+      // modern-screenshot support oklch (Tailwind 4) — utama
+      let dataUrl;
+      try {
+        dataUrl = await domToJpeg(el, { scale: 2, backgroundColor: "#ffffff", quality: 0.92, fetch: { requestInit: { mode: "cors" } } });
+      } catch (e) {
+        console.warn("modern-screenshot gagal, fallback html2canvas", e);
+        const canvas = await html2canvas(el, {
+          scale: 2,
+          useCORS: true,
+          allowTaint: false,
+          backgroundColor: "#ffffff",
+          logging: false,
+          imageTimeout: 8000,
+          onclone: fixOklchForHtml2Canvas,
+        });
+        dataUrl = canvas.toDataURL("image/jpeg", 0.92);
+      }
       const link = document.createElement("a");
       const count = Math.min(toPrint.length, 12);
       link.download = `kartu-MIJAFA-${new Date().toISOString().slice(0, 10)}-${count}siswa.jpg`;
-      link.href = canvas.toDataURL("image/jpeg", 0.92);
+      link.href = dataUrl;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       notify(`JPG ${count} siswa diunduh${toPrint.length > 12 ? " (12 pertama)" : ""}`);
     } catch (e) {
       console.error(e);
-      notify("Gagal download JPG: " + (e.message || String(e)));
+      notify("Gagal download JPG: " + (e.message || String(e)) + " - coba pakai Chrome terbaru");
     }
   }
 
@@ -337,11 +370,18 @@ export default function App() {
     try {
       notify("Menyiapkan JPG...");
       await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-      const canvas = await html2canvas(el, { scale: 3, useCORS: true, allowTaint: false, backgroundColor: "#ffffff", logging: false, imageTimeout: 5000 });
+      let dataUrl;
+      try {
+        dataUrl = await domToJpeg(el, { scale: 3, backgroundColor: "#ffffff", quality: 0.95 });
+      } catch (e) {
+        console.warn("modern-screenshot gagal, fallback html2canvas", e);
+        const canvas = await html2canvas(el, { scale: 3, useCORS: true, allowTaint: false, backgroundColor: "#ffffff", logging: false, imageTimeout: 5000, onclone: fixOklchForHtml2Canvas });
+        dataUrl = canvas.toDataURL("image/jpeg", 0.95);
+      }
       const link = document.createElement("a");
       const safeName = (siswa.nama || "kartu").replace(/[^a-zA-Z0-9]/g, "_").slice(0, 20);
       link.download = `${safeName}-${siswa.nisn || siswa.noInduk}.jpg`;
-      link.href = canvas.toDataURL("image/jpeg", 0.95);
+      link.href = dataUrl;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
