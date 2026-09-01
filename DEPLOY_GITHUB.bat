@@ -2,7 +2,7 @@
 REM Deploy Kartu Siswa MIJAFA ke GitHub - double klik file ini setelah buat repo
 REM GANTI username dan repo jika perlu
 
-set USERNAME=mijafakedungneng
+set USERNAME=bowowiwendi
 set REPO=kartu-siswa-mijafa
 
 echo === Buat repo baru di https://github.com/new ===
