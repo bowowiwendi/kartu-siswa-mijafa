@@ -316,20 +316,22 @@ export default function App() {
       return;
     }
     w.document.write(html);
-    // render cards via stringified HTML (sinkron pengaturan, tanpa QR/KELAS/TP)
+    // render cards via stringified HTML (sinkron pengaturan, tanpa QR/KELAS/TP) - logo transparan, preview == cetak
     const peraturanHtml = schoolData.peraturan.map((p) => `<li>${p}</li>`).join("");
+    const logoMijafaUrl = new URL(schoolData.logoMijafa, window.location.href).href;
+    const logoKemenagUrl = new URL(schoolData.logoKemenag || schoolData.logoTutWuri || schoolData.logoYayasan, window.location.href).href;
     const cardsHtml = showPrint
       .map(
         (s) => `
         <div class="card" style="position:relative; display:flex; flex-direction:column; background:white;">
           <div style="background:#0e7a4b; color:white; padding:4px 6px; display:flex; align-items:center; gap:6px; font-size:6px;">
-            <div style="width:22px; height:22px; background:white; border-radius:50%;"></div>
+            <img src="${logoMijafaUrl}" style="width:22px; height:22px; border-radius:50%; object-fit:contain; background:transparent;" onerror="this.style.display='none'" />
             <div style="flex:1; text-align:center; line-height:1;">
               <div style="font-size:5px; letter-spacing:0.5px;">${schoolData.yayasan}</div>
               <div style="font-size:7px; font-weight:700;">${schoolData.nama}</div>
               <div style="font-size:4.5px; opacity:0.9;">${schoolData.alamat} • Terakreditasi ${schoolData.akreditasi}</div>
             </div>
-            <div style="width:22px; height:22px; background:white; border-radius:50%;"></div>
+            <img src="${logoKemenagUrl}" style="width:22px; height:22px; border-radius:50%; object-fit:contain; background:transparent;" onerror="this.style.display='none'" />
           </div>
           <div style="background:#f4b400; text-align:center; font-size:6px; font-weight:700; padding:2px;">KARTU PELAJAR</div>
           <div style="flex:1; display:flex; gap:8px; padding:6px;">
@@ -391,7 +393,7 @@ export default function App() {
       <header className="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm no-print">
         <div className="max-w-[1280px] mx-auto px-4 py-3 flex items-center gap-4">
           <div className="flex items-center gap-3">
-            <img src="./logo-mijafa.jpg" alt="logo" className="w-10 h-10 rounded-full object-cover border-2 border-[#0e7a4b] bg-white" />
+            <img src={schoolData.logoMijafa} alt="logo" className="w-10 h-10 rounded-full object-contain border-2 border-[#0e7a4b] bg-transparent" style={{background:"transparent"}} />
             <div className="leading-tight">
               <div className="text-[11px] font-semibold tracking-widest text-[#0e7a4b]">YAYASAN PENDIDIKAN ISLAM JAMIYATUL FALAH</div>
               <div className="text-[15px] font-bold text-[#1a1a1a] tracking-tight">MI JAMIYATUL FALAH KEDUNGNENG</div>

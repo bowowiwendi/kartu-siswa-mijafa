@@ -16,8 +16,9 @@ export const school = {
   nipKepala: "-",
   tahunPelajaran: "2025/2026",
   masaBerlaku: "30 Juni 2026",
-  logoMijafa: "./logo-mijafa.jpg",
-  logoYayasan: "./logo-yayasan.jpg",
+  logoMijafa: "./logo-mijafa.png",
+  logoYayasan: "./logo-yayasan.png",
+  logoKemenag: "./logo-kemenag.png",
   logoTutWuri: "./logo-tutwuri.png",
   peraturan: [
     "Kartu wajib dibawa setiap hari sekolah",

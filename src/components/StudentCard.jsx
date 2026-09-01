@@ -30,7 +30,8 @@ export function CardFront({ siswa, school, scale = 1 }) {
         <img
           src={sch.logoMijafa}
           alt="logo mijafa"
-          className="w-[28px] h-[28px] rounded-full bg-white object-cover p-[1px] shrink-0"
+          className="w-[28px] h-[28px] rounded-full bg-transparent object-contain shrink-0"
+          style={{ background: "transparent" }}
           onError={(e) => (e.currentTarget.style.display = "none")}
         />
         <div className="flex-1 min-w-0 text-center leading-none">
@@ -39,9 +40,10 @@ export function CardFront({ siswa, school, scale = 1 }) {
           <div className="text-[5.5px] opacity-90 leading-tight">Jl. Pusponegoro No.62 Kedungneng - Losari - Brebes 52255 • Terakreditasi B</div>
         </div>
         <img
-          src={sch.logoYayasan}
-          alt="logo yayasan"
-          className="w-[28px] h-[28px] rounded-full bg-white object-cover p-[1px] shrink-0"
+          src={sch.logoKemenag || sch.logoTutWuri || sch.logoYayasan}
+          alt="logo kemenag"
+          className="w-[28px] h-[28px] rounded-full bg-transparent object-contain shrink-0"
+          style={{ background: "transparent" }}
           onError={(e) => (e.currentTarget.style.display = "none")}
         />
       </div>
