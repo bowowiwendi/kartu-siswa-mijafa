@@ -291,7 +291,7 @@ export default function App() {
     setShowPrint(toPrint);
   }
 
-  // print window
+  // print window - sinkron dengan pengaturan (schoolData), tanpa QR/KELAS/TP, masa berlaku permanen
   useEffect(() => {
     if (!showPrint) return;
     const html = `
@@ -305,7 +305,7 @@ export default function App() {
         @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
       </style></head><body>
       <div style="text-align:center; padding: 6px; font-size:10px; border-bottom:1px dashed #ccc; margin-bottom:4mm;">
-        MI JAMIYATUL FALAH KEDUNGNENG — Cetak Kartu Pelajar — ${new Date().toLocaleDateString("id-ID")} — ${showPrint.length} siswa — Potong sesuai garis
+        ${schoolData.nama} — Cetak Kartu Pelajar — ${new Date().toLocaleDateString("id-ID")} — ${showPrint.length} siswa — Potong sesuai garis
       </div>
       <div id="root"></div>
       <script>window.onload=()=>setTimeout(()=>window.print(), 500)</script>
@@ -316,7 +316,8 @@ export default function App() {
       return;
     }
     w.document.write(html);
-    // render cards via stringified HTML (simplified): we inject after
+    // render cards via stringified HTML (sinkron pengaturan, tanpa QR/KELAS/TP)
+    const peraturanHtml = schoolData.peraturan.map((p) => `<li>${p}</li>`).join("");
     const cardsHtml = showPrint
       .map(
         (s) => `
@@ -324,19 +325,18 @@ export default function App() {
           <div style="background:#0e7a4b; color:white; padding:4px 6px; display:flex; align-items:center; gap:6px; font-size:6px;">
             <div style="width:22px; height:22px; background:white; border-radius:50%;"></div>
             <div style="flex:1; text-align:center; line-height:1;">
-              <div style="font-size:5px; letter-spacing:0.5px;">YAYASAN PENDIDIKAN ISLAM JAMIYATUL FALAH</div>
-              <div style="font-size:7px; font-weight:700;">MADRASAH IBTIDAIYAH JAMIYATUL FALAH</div>
-              <div style="font-size:4.5px; opacity:0.9;">Jl. Pusponegoro No.62 Kedungneng • Terakreditasi B</div>
+              <div style="font-size:5px; letter-spacing:0.5px;">${schoolData.yayasan}</div>
+              <div style="font-size:7px; font-weight:700;">${schoolData.nama}</div>
+              <div style="font-size:4.5px; opacity:0.9;">${schoolData.alamat} • Terakreditasi ${schoolData.akreditasi}</div>
             </div>
             <div style="width:22px; height:22px; background:white; border-radius:50%;"></div>
           </div>
           <div style="background:#f4b400; text-align:center; font-size:6px; font-weight:700; padding:2px;">KARTU PELAJAR</div>
           <div style="flex:1; display:flex; gap:8px; padding:6px;">
             <div style="width:22mm; display:flex; flex-direction:column; align-items:center;">
-              <div style="width:100%; height:26mm; background:#f3f4f6; border:2px solid #0e7a4b; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:8px; color:#999; overflow:hidden;">
+              <div style="width:100%; height:30mm; background:#f3f4f6; border:2px solid #0e7a4b; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:8px; color:#999; overflow:hidden;">
                 ${s.foto ? `<img src="${s.foto}" style="width:100%; height:100%; object-fit:cover;" />` : "FOTO 3×4"}
               </div>
-              <div style="font-size:6px; font-family:monospace; margin-top:4px;">${s.nisn}</div>
             </div>
             <div style="flex:1; font-size:6px; line-height:1.3;">
               <div style="font-size:5px; color:#0e7a4b; font-weight:600;">NAMA</div>
@@ -347,7 +347,7 @@ export default function App() {
                 <div style="grid-column: span 2;"><div style="font-size:4px; color:#888;">TTL</div><div style="font-weight:600;">${s.tempatLahir}, ${s.tanggalLahir}</div></div>
                 <div style="grid-column: span 2;"><div style="font-size:4px; color:#888;">ALAMAT</div><div>${s.alamat}</div></div>
               </div>
-              <div style="margin-top:4px; font-size:5px;"><span style="background:#0e7a4b; color:white; padding:1px 6px; border-radius:999px;">KELAS ${s.kelas}</span> <span style="color:#888;">TP ${defaultSchool.tahunPelajaran}</span></div>
+              <div style="margin-top:6px;"><span style="background:#0e7a4b; color:white; padding:2px 8px; border-radius:999px; font-size:5px; font-weight:700;">Berlaku selama menjadi siswa</span></div>
             </div>
           </div>
           <div style="height:3px; background: linear-gradient(90deg, #0e7a4b, #f4b400, #0e7a4b);"></div>
@@ -355,26 +355,22 @@ export default function App() {
       `
       )
       .join("");
-    // we keep simple front only for quick print; back can be second page
     const backHtml = showPrint
       .map(
         () => `
         <div class="card" style="padding:6px; font-size:5px; display:flex; flex-direction:column;">
           <div style="font-size:6px; font-weight:700; color:#0e7a4b; border-bottom:1px solid #f4b400; padding-bottom:2px; margin-bottom:4px;">TATA TERTIB</div>
           <ol style="padding-left:12px; line-height:1.4; color:#444;">
-            <li>Kartu wajib dibawa setiap hari sekolah</li>
-            <li>Jika hilang segera lapor ke Tata Usaha</li>
-            <li>Kartu tidak boleh dipinjamkan</li>
-            <li>Ini identitas resmi siswa MIJAFA</li>
+            ${peraturanHtml}
           </ol>
           <div style="margin-top:6px; background:#f0fdf4; border:1px solid #ccebd9; border-radius:4px; padding:4px; font-size:5px;">
             <div style="font-weight:700; color:#0e7a4b;">ALAMAT SEKOLAH</div>
-            <div>Jl. Pusponegoro No.62 Kedungneng, Losari, Brebes 52255<br/>Telp. 0858 7216 6251 • mijafakedungneng@yahoo.co.id</div>
+            <div>${schoolData.alamat}, ${schoolData.desa}, Kec. ${schoolData.kecamatan}, Kab. ${schoolData.kabupaten} ${schoolData.kodePos}<br/>Telp. ${schoolData.telepon} • ${schoolData.email}</div>
           </div>
           <div style="flex:1;"></div>
           <div style="text-align:center; font-size:5px; margin-top:4px;">
             <div>Kedungneng, ${new Date().getFullYear()}</div>
-            <div style="font-weight:600; margin-top:8px;">${defaultSchool.kepalaMadrasah}</div>
+            <div style="font-weight:600; margin-top:8px;">${schoolData.kepalaMadrasah}</div>
             <div style="color:#0e7a4b; font-weight:700;">Kepala Madrasah</div>
           </div>
         </div>`
@@ -385,7 +381,7 @@ export default function App() {
     const full = `<div class="page">${cardsHtml}</div><div style="page-break-after:always;"></div><div class="page">${backHtml}</div>`;
     w.document.body.innerHTML = w.document.body.innerHTML.replace('<div id="root"></div>', full);
     w.document.close();
-  }, [showPrint]);
+  }, [showPrint, schoolData]);
 
   const selectedCount = selected.size;
 
@@ -571,7 +567,7 @@ export default function App() {
             <div className="grid md:grid-cols-3 gap-6 justify-items-center">
               {filtered.slice(0, 3).map((s) => (
                 <div key={s.noInduk} className="scale-[0.95] origin-top">
-                  <CardFront siswa={s} />
+                  <CardFront siswa={s} school={schoolData} />
                   <div className="text-center mt-2">
                     <button onClick={() => setPreview(s)} className="text-xs text-[#0e7a4b] font-semibold hover:underline">
                       Lihat depan & belakang →
@@ -718,11 +714,11 @@ export default function App() {
             <div className="flex flex-col lg:flex-row gap-8 justify-center items-center bg-white p-8 rounded-xl border">
               <div className="flex flex-col items-center gap-2">
                 <span className="text-xs font-bold tracking-widest text-[#0e7a4b]">DEPAN</span>
-                <CardFront siswa={preview} />
+                <CardFront siswa={preview} school={schoolData} />
               </div>
               <div className="flex flex-col items-center gap-2">
                 <span className="text-xs font-bold tracking-widest text-[#0e7a4b]">BELAKANG</span>
-                <CardBack siswa={preview} />
+                <CardBack siswa={preview} school={schoolData} />
               </div>
             </div>
             <div className="mt-4 text-xs text-gray-500 text-center">Ukuran: 85.6mm × 54mm (CR80) • 300 DPI → 1011×638 px • Bahan: PVC / Art Paper 260gsm laminasi</div>
@@ -822,13 +818,13 @@ export default function App() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {showPrint.map((s) => (
-                <CardFront key={s.noInduk} siswa={s} />
+                <CardFront key={s.noInduk} siswa={s} school={schoolData} />
               ))}
             </div>
             <div className="my-6 border-t border-dashed" />
             <div className="grid grid-cols-2 gap-4">
               {showPrint.map((s) => (
-                <CardBack key={s.noInduk + "-back"} siswa={s} />
+                <CardBack key={s.noInduk + "-back"} siswa={s} school={schoolData} />
               ))}
             </div>
           </div>
