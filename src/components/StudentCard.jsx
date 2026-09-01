@@ -1,4 +1,14 @@
 import { school as defaultSchool } from "../data/school";
+import { QRCodeSVG } from "qrcode.react";
+
+function getPreviewUrl(siswa) {
+  if (typeof window === "undefined") return "";
+  const base = window.location.origin + window.location.pathname;
+  // QR menuju preview kartu — saat discan akan buka preview otomatis via ?preview=noInduk
+  const id = siswa?.noInduk || siswa?.nisn || "";
+  if (!id) return base;
+  return `${base}?preview=${encodeURIComponent(id)}`;
+}
 
 function formatTTL(s) {
   if (!s.tanggalLahir) return s.tempatLahir || "-";
@@ -138,17 +148,25 @@ export function CardBack({ siswa, school }) {
 
         <div className="w-[36mm] flex flex-col items-center text-center shrink-0">
           <div className="text-[6px] text-gray-500 font-medium">Kedungneng, {new Date().getFullYear()}</div>
-          {/* Ruang tanda tangan diperluas */}
+          {/* Ruang tanda tangan — tanpa emotikon, garis solid rapi */}
           <div className="flex-1 flex flex-col items-center justify-center w-full py-2">
             <div className="text-[6px] font-bold text-[#1a1a1a] leading-tight px-1">{sch.kepalaMadrasah}</div>
-            <div className="w-20 h-14 mx-auto border-b-2 border-dashed border-gray-300 flex items-center justify-center text-[11px] opacity-30 mt-1">✍️</div>
+            <div className="w-20 h-14 mx-auto border-b border-gray-400 mt-1" />
             <div className="text-[6.5px] font-extrabold text-[#0e7a4b] mt-1.5">Kepala Madrasah</div>
             {sch.nipKepala !== "-" && <div className="text-[5px] font-mono text-gray-500 mt-0.5">{sch.nipKepala}</div>}
           </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-1.5 w-full">
-            <div className="text-[5px] font-bold tracking-widest text-gray-600">KETERANGAN</div>
-            <div className="text-[6px] font-mono font-bold text-[#1a1a1a]">{siswa.noInduk}</div>
-            <div className="text-[5px] text-gray-500">NSM: {sch.nsm}</div>
+          <div className="w-full flex gap-1.5 items-stretch">
+            <div className="flex-1 bg-gray-50 border border-gray-200 rounded-lg p-1.5 flex flex-col justify-center">
+              <div className="text-[5px] font-bold tracking-widest text-gray-600">KETERANGAN</div>
+              <div className="text-[6px] font-mono font-bold text-[#1a1a1a] break-all leading-tight">{siswa.noInduk}</div>
+              <div className="text-[5px] text-gray-500">NSM: {sch.nsm}</div>
+            </div>
+            <div className="shrink-0 bg-white border border-gray-200 rounded-lg p-1 flex flex-col items-center justify-center">
+              <div className="w-[18mm] h-[18mm] flex items-center justify-center">
+                <QRCodeSVG value={getPreviewUrl(siswa)} size={68} level="M" bgColor="#FFFFFF" fgColor="#000000" className="w-full h-full" />
+              </div>
+              <div className="text-[4.5px] font-bold text-gray-600 tracking-wide leading-none mt-0.5">Scan preview</div>
+            </div>
           </div>
         </div>
       </div>

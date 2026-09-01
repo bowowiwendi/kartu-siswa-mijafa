@@ -68,6 +68,7 @@ export default function App() {
   const printRef = useRef(null);
   const previewCardRef = useRef(null);
   const bulkExportRef = useRef(null);
+  const selectAllRef = useRef(null);
 
   // form state
   const emptyForm = {
@@ -112,6 +113,7 @@ export default function App() {
     setTimeout(() => setToast(""), 3000);
   }
 
+  // ceklis pilihan — fixed: tidak lagi bandingkan size saja, tapi cek per item filtered
   function toggleSelect(id) {
     const n = new Set(selected);
     if (n.has(id)) n.delete(id);
@@ -119,9 +121,40 @@ export default function App() {
     setSelected(n);
   }
   function toggleSelectAll() {
-    if (selected.size === filtered.length) setSelected(new Set());
-    else setSelected(new Set(filtered.map((s) => s.noInduk)));
+    const allSelected = filtered.length > 0 && filtered.every((s) => selected.has(s.noInduk));
+    if (allSelected) {
+      const n = new Set(selected);
+      filtered.forEach((s) => n.delete(s.noInduk));
+      setSelected(n);
+    } else {
+      const n = new Set(selected);
+      filtered.forEach((s) => n.add(s.noInduk));
+      setSelected(n);
+    }
   }
+  // indeterminate & sinkronisasi selected saat data/ filter berubah
+  const allFilteredSelected = filtered.length > 0 && filtered.every((s) => selected.has(s.noInduk));
+  const someFilteredSelected = filtered.some((s) => selected.has(s.noInduk));
+  useEffect(() => {
+    if (selectAllRef.current) selectAllRef.current.indeterminate = !allFilteredSelected && someFilteredSelected;
+  }, [allFilteredSelected, someFilteredSelected]);
+  // bersihkan selected yang sudah tidak ada di students (misal setelah hapus)
+  useEffect(() => {
+    const ids = new Set(students.map((s) => s.noInduk));
+    const hasStale = [...selected].some((id) => !ids.has(id));
+    if (hasStale) setSelected((prev) => new Set([...prev].filter((id) => ids.has(id))));
+  }, [students]); // eslint-disable-line react-hooks/exhaustive-deps
+  // QR preview via URL: ?preview=noInduk  -> auto buka preview saat link QR di-scan
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const pid = params.get("preview") || params.get("siswa") || params.get("nisn");
+      if (pid) {
+        const found = students.find((s) => String(s.noInduk) === String(pid) || String(s.nisn) === String(pid));
+        if (found) setPreview(found);
+      }
+    } catch {}
+  }, [students]);
 
   function openAdd() {
     setEditing(null);
@@ -392,7 +425,7 @@ export default function App() {
     }
   }
 
-  // print window - sinkron dengan pengaturan (schoolData), tanpa QR/KELAS/TP, masa berlaku permanen
+  // print window - sinkron dengan pengaturan (schoolData), dengan QR preview pojok kanan bawah & tanpa emotikon
   useEffect(() => {
     if (!showPrint) return;
     const html = `
@@ -402,7 +435,7 @@ export default function App() {
         * { box-sizing: border-box; margin:0; padding:0; }
         body { font-family: Poppins, sans-serif; background: white; }
         .page { display: grid; grid-template-columns: repeat(2, 88mm); grid-auto-rows: 56mm; gap: 3mm; justify-content: center; padding: 3mm; }
-        .card { width: 88mm; height: 56mm; border: 1px solid #ddd; border-radius: 12px; overflow:hidden; page-break-inside: avoid; }
+        .card { width: 88mm; height: 56mm; border: 1px solid #ddd; border-radius: 12px; overflow:hidden; page-break-inside: avoid; position:relative; }
         @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
       </style></head><body>
       <div style="text-align:center; padding: 6px; font-size:10px; border-bottom:1px dashed #ccc; margin-bottom:4mm;">
@@ -417,14 +450,18 @@ export default function App() {
       return;
     }
     w.document.write(html);
-    // render cards via stringified HTML (sinkron pengaturan, tanpa QR/KELAS/TP) - logo transparan, preview == cetak
+    // render cards via stringified HTML - logo transparan, QR pojok kanan bawah, tanpa emotikon
     const peraturanHtml = schoolData.peraturan.map((p) => `<li>${p}</li>`).join("");
     const logoMijafaUrl = new URL(schoolData.logoMijafa, window.location.href).href;
     const logoKemenagUrl = new URL(schoolData.logoKemenag || schoolData.logoTutWuri || schoolData.logoYayasan, window.location.href).href;
+    const baseUrl = window.location.origin + window.location.pathname;
     // SATU LEMBAR: depan & belakang berdampingan per siswa (4 siswa = 8 sisi per lembar A4, kartu 88x56mm lebih besar)
     const pairHtml = showPrint
-      .map(
-        (s) => `
+      .map((s) => {
+        const previewUrl = baseUrl + "?preview=" + encodeURIComponent(s.noInduk);
+        const qrData = encodeURIComponent(previewUrl);
+        const qrSrc = "https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=" + qrData;
+        return `
         <div class="card" style="position:relative; display:flex; flex-direction:column; background:white; border-radius:12px;">
           <div style="background:#0e7a4b; color:white; padding:5px 8px; display:flex; align-items:center; gap:8px; font-size:6px;">
             <img src="${logoMijafaUrl}" style="width:26px; height:26px; border-radius:50%; object-fit:contain; background:transparent;" onerror="this.style.display='none'" />
@@ -458,27 +495,48 @@ export default function App() {
           </div>
           <div style="height:4px; background: linear-gradient(90deg, #0e7a4b, #f4b400, #0e7a4b);"></div>
         </div>
-        <div class="card" style="padding:10px; font-size:5px; display:flex; flex-direction:column; background:white; border-radius:12px;">
-          <div style="font-size:7.5px; font-weight:800; color:#0e7a4b; border-bottom:2px solid #f4b400; padding-bottom:3px; margin-bottom:6px; letter-spacing:1px;">TATA TERTIB & PERATURAN</div>
-          <ol style="padding-left:14px; line-height:1.5; color:#222; font-size:6.5px; font-weight:500;">
-            ${peraturanHtml}
-          </ol>
-          <div style="margin-top:8px; background:#f0fdf4; border:1px solid #ccebd9; border-radius:8px; padding:6px; font-size:6px;">
-            <div style="font-weight:800; color:#0e7a4b; font-size:6px;">ALAMAT SEKOLAH</div>
-            <div style="font-size:6px; color:#333; font-weight:500;">${schoolData.alamat}, ${schoolData.desa}, Kec. ${schoolData.kecamatan}, Kab. ${schoolData.kabupaten} ${schoolData.kodePos}<br/>Telp. ${schoolData.telepon} • ${schoolData.email}</div>
-          </div>
-          <div style="flex:1; min-height:6px;"></div>
-          <div style="text-align:center; font-size:6px; margin-top:6px;">
-            <div style="color:#666; font-size:6px;">Kedungneng, ${new Date().getFullYear()}</div>
-            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; margin-top:4px;">
-              <div style="font-size:6px; font-weight:700; color:#1a1a1a;">${schoolData.kepalaMadrasah}</div>
-              <div style="width:80px; height:52px; border-bottom:2px dashed #bbb; display:flex; align-items:center; justify-content:center; font-size:12px; opacity:0.25; margin-top:2px;">✍️</div>
-              <div style="font-size:6.5px; font-weight:800; color:#0e7a4b; margin-top:4px;">Kepala Madrasah</div>
+        <div class="card" style="padding:8px; font-size:5px; display:flex; flex-direction:column; background:white; border-radius:12px;">
+          <div style="display:flex; gap:8px; flex:1;">
+            <div style="flex:1; display:flex; flex-direction:column;">
+              <div style="font-size:7.5px; font-weight:800; color:#0e7a4b; border-bottom:2px solid #f4b400; padding-bottom:3px; margin-bottom:6px; letter-spacing:1px;">TATA TERTIB & PERATURAN</div>
+              <ol style="padding-left:14px; line-height:1.5; color:#222; font-size:6px; font-weight:500;">
+                ${peraturanHtml}
+              </ol>
+              <div style="margin-top:6px; background:#f0fdf4; border:1px solid #ccebd9; border-radius:8px; padding:5px; font-size:6px;">
+                <div style="font-weight:800; color:#0e7a4b; font-size:6px;">ALAMAT SEKOLAH</div>
+                <div style="font-size:5.5px; color:#333; font-weight:500;">${schoolData.alamat}, ${schoolData.desa}, Kec. ${schoolData.kecamatan}, Kab. ${schoolData.kabupaten} ${schoolData.kodePos}<br/>Telp. ${schoolData.telepon} • ${schoolData.email}</div>
+              </div>
+              <div style="flex:1; min-height:4px;"></div>
+            </div>
+            <div style="width:36mm; display:flex; flex-direction:column; align-items:center; text-align:center; flex-shrink:0;">
+              <div style="color:#666; font-size:6px;">Kedungneng, ${new Date().getFullYear()}</div>
+              <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; margin-top:4px; flex:1; width:100%;">
+                <div style="font-size:6px; font-weight:700; color:#1a1a1a;">${schoolData.kepalaMadrasah}</div>
+                <div style="width:80px; height:52px; border-bottom:1px solid #999; margin-top:2px;"></div>
+                <div style="font-size:6.5px; font-weight:800; color:#0e7a4b; margin-top:4px;">Kepala Madrasah</div>
+                ${schoolData.nipKepala !== "-" ? `<div style="font-size:5px; font-family:monospace; color:#666; margin-top:1px;">${schoolData.nipKepala}</div>` : ""}
+              </div>
+              <div style="width:100%; display:flex; gap:5px; align-items:stretch; margin-top:6px;">
+                <div style="flex:1; background:#f9fafb; border:1px solid #e5e7eb; border-radius:6px; padding:4px; display:flex; flex-direction:column; justify-content:center; text-align:center;">
+                  <div style="font-size:5px; font-weight:700; letter-spacing:0.5px; color:#666;">KETERANGAN</div>
+                  <div style="font-size:6px; font-family:monospace; font-weight:700; color:#1a1a1a; word-break:break-all; line-height:1.1;">${s.noInduk}</div>
+                  <div style="font-size:5px; color:#777;">NSM: ${schoolData.nsm}</div>
+                </div>
+                <div style="flex-shrink:0; background:white; border:1px solid #e5e7eb; border-radius:6px; padding:3px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                  <img src="${qrSrc}" style="width:16mm; height:16mm; object-fit:contain; display:block;" />
+                  <div style="font-size:4.5px; font-weight:700; color:#666; margin-top:1px; line-height:1;">Scan preview</div>
+                </div>
+              </div>
             </div>
           </div>
+          <div style="margin-top:6px; display:flex; align-items:center; justify-content:space-between; font-size:5px; color:#999; border-top:1px solid #f3f4f6; padding-top:4px;">
+            <span>© MI JAMIYATUL FALAH KEDUNGNENG • Dicetak: ${new Date().toLocaleDateString("id-ID")}</span>
+            <span style="font-family:monospace; font-weight:700;">${s.nisn}</span>
+          </div>
+          <div style="position:absolute; bottom:0; left:0; right:0; height:4px; background:#0e7a4b;"></div>
         </div>
-      `
-      )
+      `;
+      })
       .join("");
 
     // Satu lembar: depan & belakang berdampingan (2 kolom), potong tengah - 4 siswa/lembar dengan kartu 56mm
@@ -595,7 +653,7 @@ export default function App() {
               <thead className="bg-gray-50 text-gray-600 text-xs uppercase tracking-wide">
                 <tr>
                   <th className="p-3 w-10">
-                    <input type="checkbox" checked={selected.size === filtered.length && filtered.length > 0} onChange={toggleSelectAll} />
+                    <input ref={selectAllRef} type="checkbox" checked={allFilteredSelected} onChange={toggleSelectAll} title={allFilteredSelected ? "Batal pilih semua (filter ini)" : someFilteredSelected ? "Pilih semua (filter ini) - sebagian terpilih" : "Pilih semua (filter ini)"} />
                   </th>
                   <th className="p-3 text-left">No</th>
                   <th className="p-3 text-left">Foto</th>
