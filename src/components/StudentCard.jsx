@@ -155,10 +155,10 @@ export function CardBack({ siswa, school }) {
         </div>
 
         <div className="w-[36mm] flex flex-col items-center text-center shrink-0">
-          <div className="text-[6px] text-gray-500 font-medium">Kedungneng, {new Date().getFullYear()}</div>
-          {/* Ruang tanda tangan — tanpa emotikon, garis solid rapi — urutan: label di atas, nama di bawah garis */}
+          {/* Ruang tanda tangan — tanggal dekat Kepala Madrasah (tidak lagi di atas) */}
           <div className="flex-1 flex flex-col items-center justify-center w-full py-2">
-            <div className="text-[6.5px] font-extrabold text-[#0e7a4b] leading-tight px-1">Kepala Madrasah</div>
+            <div className="text-[6px] text-gray-500 font-medium">Kedungneng, {new Date().getFullYear()}</div>
+            <div className="text-[6.5px] font-extrabold text-[#0e7a4b] leading-tight px-1 mt-1">Kepala Madrasah</div>
             <div className="w-20 h-14 mx-auto border-b border-gray-400 mt-1" />
             <div className="text-[6px] font-bold text-[#1a1a1a] leading-tight px-1 mt-1.5">{sch.kepalaMadrasah}</div>
             {sch.nipKepala !== "-" && <div className="text-[5px] font-mono text-gray-500 mt-0.5">{sch.nipKepala}</div>}

@@ -539,9 +539,9 @@ export default function App() {
               <div style="flex:1; min-height:4px;"></div>
             </div>
             <div style="width:36mm; display:flex; flex-direction:column; align-items:center; text-align:center; flex-shrink:0;">
-              <div style="color:#666; font-size:6px;">Kedungneng, ${new Date().getFullYear()}</div>
-              <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; margin-top:4px; flex:1; width:100%;">
-                <div style="font-size:6.5px; font-weight:800; color:#0e7a4b;">Kepala Madrasah</div>
+              <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; flex:1; width:100%;">
+                <div style="color:#666; font-size:6px;">Kedungneng, ${new Date().getFullYear()}</div>
+                <div style="font-size:6.5px; font-weight:800; color:#0e7a4b; margin-top:2px;">Kepala Madrasah</div>
                 <div style="width:80px; height:52px; border-bottom:1px solid #999; margin-top:2px;"></div>
                 <div style="font-size:6px; font-weight:700; color:#1a1a1a; margin-top:4px;">${schoolData.kepalaMadrasah}</div>
                 ${schoolData.nipKepala !== "-" ? `<div style="font-size:5px; font-family:monospace; color:#666; margin-top:1px;">${schoolData.nipKepala}</div>` : ""}
