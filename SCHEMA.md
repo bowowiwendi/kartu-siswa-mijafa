@@ -41,7 +41,6 @@ Dipakai di `src/data/school.js` & `src/data/students.js`. Cocok untuk import Exc
     "id": "uuid-v4",
     "noInduk": "111233290134250001",  // 18 digit NSM+urut
     "nisn": "3184581635",              // 10 digit
-    "nik": "3329120208180002",         // 16 digit (opsional di kartu)
     "nama": "ADITYA IRFAN AD DIN",
     "jenisKelamin": "Laki-laki | Perempuan",
     "tempatLahir": "BREBES",
@@ -124,7 +123,6 @@ CREATE TABLE siswa (
   id CHAR(36) PRIMARY KEY,
   no_induk VARCHAR(18) UNIQUE NOT NULL, -- 111233290134250001 (NSM + 6 digit)
   nisn CHAR(10) UNIQUE NOT NULL,
-  nik CHAR(16) UNIQUE,
   nama_lengkap VARCHAR(100) NOT NULL,
   jenis_kelamin ENUM('Laki-laki','Perempuan') NOT NULL,
   tempat_lahir VARCHAR(50) NOT NULL,
@@ -195,17 +193,17 @@ CREATE TABLE cetak_detail (
 
 ## 4. Excel Template Import
 
-Header wajib (baris 1) — urutan harus sama:
+Header wajib (baris 1) — urutan harus sama (NIK sudah dihapus demi privasi):
 
-| No | Nama Lengkap | NISN | NIK | Tempat Lahir | Tanggal Lahir (YYYY-MM-DD) | Jenis Kelamin | Nama Ayah | Nama Ibu | No Induk | Kelas | Alamat | Tahun Masuk | Foto (opsional URL/base64) |
-|----|--------------|------|-----|--------------|-----------------------------|---------------|-----------|----------|----------|-------|--------|-------------|----------------------------|
+| No | Nama Lengkap | NISN | Tempat Lahir | Tanggal Lahir (YYYY-MM-DD) | Jenis Kelamin | Nama Ayah | Nama Ibu | No Induk | Kelas | Alamat | Tahun Masuk | Foto (opsional URL/base64) |
+|----|--------------|------|--------------|-----------------------------|---------------|-----------|----------|----------|-------|--------|-------------|----------------------------|
 
 - Validasi:
   - NISN 10 digit angka, unik.
   - No Induk 18 digit, prefix `111233290134` + 6 digit urut.
   - Tanggal Lahir format Excel `DATE` atau `YYYY-MM-DD`.
   - Kelas: `1`–`6` atau `1A`, `2B` dsb.
-  - Jika NIK kosong boleh, tapi disarankan 16 digit.
+  - NIK tidak lagi disimpan/ditampilkan (dihapus dari semua template & kartu).
 
 Contoh file: `/students-sample.json` & `/public/template-import.xlsx` (digenerate via app).
 

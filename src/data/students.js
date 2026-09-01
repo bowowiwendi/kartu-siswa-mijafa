@@ -9,7 +9,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329120208180002",
     "namaAyah": "RASWAN",
     "namaIbu": "WASI'AH"
   },
@@ -23,7 +22,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3175056109180003",
     "namaAyah": "ADIK FIRDAUS",
     "namaIbu": "LENI SUCIATI"
   },
@@ -37,7 +35,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329126301190004",
     "namaAyah": "IBROHIM",
     "namaIbu": "JAJIROH"
   },
@@ -51,7 +48,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329125211180008",
     "namaAyah": "KARYUDI",
     "namaIbu": "ULINAH"
   },
@@ -65,7 +61,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329120808180006",
     "namaAyah": "SOBRI",
     "namaIbu": "MASLIKHAH"
   },
@@ -79,7 +74,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329121209180001",
     "namaAyah": "ROKHMAT",
     "namaIbu": "ROAYAH"
   },
@@ -93,7 +87,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329120904180001",
     "namaAyah": "ABDUL WARNO",
     "namaIbu": "NURUL AZIZAH"
   },
@@ -107,7 +100,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3671056706180006",
     "namaAyah": "ZAINUDIN",
     "namaIbu": "HERNANI"
   },
@@ -121,7 +113,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2024",
-    "nik": "3329121708180005",
     "namaAyah": "ANDIKA WANTO",
     "namaIbu": "SRI AMPELI"
   },
@@ -135,7 +126,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329122701190001",
     "namaAyah": "ARIS PAOZI",
     "namaIbu": "ROHARSINI"
   },
@@ -149,7 +139,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329122912180002",
     "namaAyah": "WATIR",
     "namaIbu": "WATIAH"
   },
@@ -163,7 +152,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329126105190001",
     "namaAyah": "ROKIMIN",
     "namaIbu": "MARATUN SHOLIHAH"
   },
@@ -177,7 +165,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329125112180002",
     "namaAyah": "EKO JULIYANTO",
     "namaIbu": "SURIJAH"
   },
@@ -191,7 +178,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329121006190003",
     "namaAyah": "CASRIPIN",
     "namaIbu": "ULFAH"
   },
@@ -205,7 +191,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329125005190004",
     "namaAyah": "KOMARUDIN",
     "namaIbu": "SRI ASIH"
   },
@@ -219,7 +204,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329122601190003",
     "namaAyah": "WASANTO ARIF PRASETIO",
     "namaIbu": "MIR'ATUL HAYATI"
   },
@@ -233,7 +217,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329124804190002",
     "namaAyah": "ALIF SYAHYANI S.PD.I",
     "namaIbu": "ALIFATUL BIRUL WALIDAINI"
   },
@@ -247,7 +230,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329122310180001",
     "namaAyah": "DARTIM",
     "namaIbu": "NUR HAYATI"
   },
@@ -261,7 +243,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329125603180001",
     "namaAyah": "TASMANTO",
     "namaIbu": "SUSANTI"
   },
@@ -275,7 +256,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329121307180005",
     "namaAyah": "NUR WENDI",
     "namaIbu": "TUTI RIYANTI"
   },
@@ -289,7 +269,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329121011180004",
     "namaAyah": "VERIS PERMANA",
     "namaIbu": "SITI MUTI'AH"
   },
@@ -303,7 +282,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329120907180002",
     "namaAyah": "SUNARDI",
     "namaIbu": "ZAHROTUN NISA"
   },
@@ -317,7 +295,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329124805190008",
     "namaAyah": "TOFIK TRI WAHYUDIANSAH",
     "namaIbu": "TITIN NARYATI"
   },
@@ -331,7 +308,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329124905190002",
     "namaAyah": "CASIM",
     "namaIbu": "JAETIN"
   },
@@ -345,7 +321,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329125905190003",
     "namaAyah": "ABDUL KALIM",
     "namaIbu": "IFAH LATIFAH"
   },
@@ -359,7 +334,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3216215204190003",
     "namaAyah": "TRIO EKO PURWANTO",
     "namaIbu": "NURLAELAH"
   },
@@ -373,7 +347,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329122102180001",
     "namaAyah": "AGUS BAKHTIAR",
     "namaIbu": "YULI SURANI"
   },
@@ -387,7 +360,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329121211180002",
     "namaAyah": "HARYANTO",
     "namaIbu": "NURLAELAH"
   },
@@ -401,7 +373,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329120202190004",
     "namaAyah": "TRI LAKSONO BUDI UTOMO",
     "namaIbu": "INDAH FAKHRONISA"
   },
@@ -415,7 +386,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329126301190003",
     "namaAyah": "ZAENAL ASIKIN",
     "namaIbu": "RIDA SUDYERNA LUMBANTOBING"
   },
@@ -429,7 +399,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329126210180001",
     "namaAyah": "RAJUKI",
     "namaIbu": "JUMAMI"
   },
@@ -443,7 +412,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329124409190003",
     "namaAyah": "MOH. GUSTOMI",
     "namaIbu": "SITI MUSYAROPAH"
   },
@@ -457,7 +425,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329122404190002",
     "namaAyah": "WASMUD",
     "namaIbu": "RATNI"
   },
@@ -471,7 +438,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329126711180007",
     "namaAyah": "TARDI",
     "namaIbu": "ULFAH ROSALINA"
   },
@@ -485,7 +451,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329120811170004",
     "namaAyah": "SUSANTO",
     "namaIbu": "DARKUNAH"
   },
@@ -499,7 +464,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329120811170003",
     "namaAyah": "SUSANTO",
     "namaIbu": "DARKUNAH"
   },
@@ -513,7 +477,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329122804190004",
     "namaAyah": "AGUS ROKHIMIN",
     "namaIbu": "IIS ROSANTI"
   },
@@ -527,7 +490,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329121902190002",
     "namaAyah": "WARTONO",
     "namaIbu": "SARIPAH"
   },
@@ -541,7 +503,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3203041209170003",
     "namaAyah": "OTONG SUBANDI",
     "namaIbu": "SITI ROBIAH"
   },
@@ -555,7 +516,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329121711180003",
     "namaAyah": "DARMONO",
     "namaIbu": "KASIROH"
   },
@@ -569,7 +529,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329120311180001",
     "namaAyah": "AGUS SUDIRO",
     "namaIbu": "NURJANAH"
   },
@@ -583,7 +542,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329120202190001",
     "namaAyah": "ADE KURNIAWAN",
     "namaIbu": "DWI RAHAYU"
   },
@@ -597,7 +555,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "",
     "namaAyah": "",
     "namaIbu": ""
   },
@@ -611,7 +568,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329121812180002",
     "namaAyah": "MOH. IKROM",
     "namaIbu": "KUSNAENI"
   },
@@ -625,7 +581,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329124210180002",
     "namaAyah": "BAYU APIANU",
     "namaIbu": "FIRLI APRILIANI"
   },
@@ -639,7 +594,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "1",
     "tahunMasuk": "2025",
-    "nik": "3329125905190003",
     "namaAyah": "ABDUL KALIM",
     "namaIbu": "IFAH LATIFAH"
   },
@@ -653,7 +607,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329126812170003",
     "namaAyah": "MOHAMAD SAHRONI",
     "namaIbu": "WAHYUNINGSIH"
   },
@@ -667,7 +620,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3209035405180005",
     "namaAyah": "-",
     "namaIbu": "DANISAH"
   },
@@ -681,7 +633,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329122004170004",
     "namaAyah": "-",
     "namaIbu": "FITRIA"
   },
@@ -695,7 +646,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329124907180001",
     "namaAyah": "MUGNIS.Pd.I",
     "namaIbu": "YULI YANTI AMALIYAH"
   },
@@ -709,7 +659,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329124305170002",
     "namaAyah": "-",
     "namaIbu": "YUHANA"
   },
@@ -723,7 +672,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329124309170003",
     "namaAyah": "-",
     "namaIbu": "JAJIROH"
   },
@@ -737,7 +685,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329121010160002",
     "namaAyah": "SODIKIN",
     "namaIbu": "RUSNAENI"
   },
@@ -751,7 +698,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329121505180003",
     "namaAyah": "RIO SEMPANA",
     "namaIbu": "INDAWATI"
   },
@@ -765,7 +711,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "",
     "namaAyah": "",
     "namaIbu": ""
   },
@@ -779,7 +724,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329120912170002",
     "namaAyah": "-",
     "namaIbu": "NURJANAH"
   },
@@ -793,7 +737,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329122106170004",
     "namaAyah": "-",
     "namaIbu": "TITI HARYATI"
   },
@@ -807,7 +750,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3209046211170001",
     "namaAyah": "-",
     "namaIbu": "YANTI"
   },
@@ -821,7 +763,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329125703180003",
     "namaAyah": "-",
     "namaIbu": "ERNAWATI"
   },
@@ -835,7 +776,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329124109180001",
     "namaAyah": "-",
     "namaIbu": "NUNUNG SRIYANTI"
   },
@@ -849,7 +789,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329127003180001",
     "namaAyah": "AHMAD JAELANI",
     "namaIbu": "DIANAH LESTARI"
   },
@@ -863,7 +802,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329122211170005",
     "namaAyah": "-",
     "namaIbu": "IMAH ANGGRAENI"
   },
@@ -877,7 +815,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329121102170002",
     "namaAyah": "-",
     "namaIbu": "DEVI TIARA"
   },
@@ -891,7 +828,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329122104180001",
     "namaAyah": "-",
     "namaIbu": "KANAH"
   },
@@ -905,7 +841,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329122404170001",
     "namaAyah": "-",
     "namaIbu": "WIYATUN"
   },
@@ -919,7 +854,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329122511170003",
     "namaAyah": "-",
     "namaIbu": "ANISAH"
   },
@@ -933,7 +867,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329120504170002",
     "namaAyah": "SA'ID MUGHOPAR",
     "namaIbu": "UGHNIYATI"
   },
@@ -947,7 +880,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329125009190005",
     "namaAyah": "-",
     "namaIbu": "LILIS LIDIYA"
   },
@@ -961,7 +893,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329125507170004",
     "namaAyah": "-",
     "namaIbu": "SUNENTI"
   },
@@ -975,7 +906,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329126308170001",
     "namaAyah": "-",
     "namaIbu": "RINAH"
   },
@@ -989,7 +919,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329124307180008",
     "namaAyah": "-",
     "namaIbu": "LILIS"
   },
@@ -1003,7 +932,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329122603180005",
     "namaAyah": "-",
     "namaIbu": "RIZQI DIAN UTAMI"
   },
@@ -1017,7 +945,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329122105170003",
     "namaAyah": "-",
     "namaIbu": "WITRI"
   },
@@ -1031,7 +958,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329122306170001",
     "namaAyah": "-",
     "namaIbu": "SRI AYATI"
   },
@@ -1045,7 +971,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329124304180003",
     "namaAyah": "AMRITI",
     "namaIbu": "DURINAH"
   },
@@ -1059,7 +984,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329125512170004",
     "namaAyah": "NUR AMALIA",
     "namaIbu": "NUR AMALIA"
   },
@@ -1073,7 +997,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329126809170002",
     "namaAyah": "-",
     "namaIbu": "JUBAEDAH"
   },
@@ -1087,7 +1010,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329125810170002",
     "namaAyah": "-",
     "namaIbu": "ROSIAH"
   },
@@ -1101,7 +1023,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329120312170002",
     "namaAyah": "-",
     "namaIbu": "RUMINI"
   },
@@ -1115,7 +1036,6 @@ export const initialStudents = [
     "alamat": "Randusari",
     "kelas": "2",
     "tahunMasuk": "2024",
-    "nik": "3329125904180003",
     "namaAyah": "SAMSUDIN",
     "namaIbu": "ATIKAH"
   },
@@ -1129,7 +1049,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329120907160002",
     "namaAyah": "AGUS BAKHTIAR",
     "namaIbu": "YULI SURANI"
   },
@@ -1143,7 +1062,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329120812160001",
     "namaAyah": "SUDIN",
     "namaIbu": "SRI ASIH"
   },
@@ -1157,7 +1075,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329124909160008",
     "namaAyah": "SUPARJO",
     "namaIbu": "NURMALA"
   },
@@ -1171,7 +1088,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329135010160004",
     "namaAyah": "ALI SUPANDI",
     "namaIbu": "SOLICHAH"
   },
@@ -1185,7 +1101,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329125402170004",
     "namaAyah": "CACA SUBAWE",
     "namaIbu": "RUKOYAH"
   },
@@ -1199,7 +1114,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329121602160003",
     "namaAyah": "ABDUL KHALIMI",
     "namaIbu": "JOLEKAH"
   },
@@ -1213,7 +1127,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329120310160005",
     "namaAyah": "CAHYA",
     "namaIbu": "SURINI"
   },
@@ -1227,7 +1140,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3209044505170001",
     "namaAyah": "CASUDIN",
     "namaIbu": "DIANA PURWA DEWI"
   },
@@ -1241,7 +1153,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329121009160005",
     "namaAyah": "SUDRIYONO",
     "namaIbu": "MELI FATMALA"
   },
@@ -1255,7 +1166,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329125002170001",
     "namaAyah": "SAEPULOH",
     "namaIbu": "NARITI HERYANIE"
   },
@@ -1269,7 +1179,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329124508160004",
     "namaAyah": "SUNANDAR",
     "namaIbu": "HERNIAWATI"
   },
@@ -1283,7 +1192,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329120604160003",
     "namaAyah": "RASMAN",
     "namaIbu": "ROFI'AH"
   },
@@ -1297,7 +1205,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329125307170002",
     "namaAyah": "BAHRUN",
     "namaIbu": "DESI KURNIATI"
   },
@@ -1311,7 +1218,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329121809170002",
     "namaAyah": "TATANG",
     "namaIbu": "JUNAENI"
   },
@@ -1325,7 +1231,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "",
     "namaAyah": "",
     "namaIbu": ""
   },
@@ -1339,7 +1244,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329127009160002",
     "namaAyah": "ANONIM",
     "namaIbu": "SRI HERNAYATI"
   },
@@ -1353,7 +1257,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329126412160002",
     "namaAyah": "ESANTO",
     "namaIbu": "ANZI ASTUTI HARDIYANTI"
   },
@@ -1367,7 +1270,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329125901180003",
     "namaAyah": "ANDRI HARI SETIAWAN",
     "namaIbu": "ULWIYAH"
   },
@@ -1381,7 +1283,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329124509160003",
     "namaAyah": "AGUS PURNOMO",
     "namaIbu": "TAISAH"
   },
@@ -1395,7 +1296,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329120904170002",
     "namaAyah": "KUSWOYO",
     "namaIbu": "TURNINGSIH"
   },
@@ -1409,7 +1309,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329126212160002",
     "namaAyah": "SAHRI ROMADON",
     "namaIbu": "JUNIAH"
   },
@@ -1423,7 +1322,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329122008160001",
     "namaAyah": "UUN MAHSUNI",
     "namaIbu": "MABRUROH"
   },
@@ -1437,7 +1335,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329122306160001",
     "namaAyah": "SAJUM SAYUTI",
     "namaIbu": "SANI'AH"
   },
@@ -1451,7 +1348,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329121909160004",
     "namaAyah": "TAMRODI",
     "namaIbu": "JAMILATUL HIKMAH"
   },
@@ -1465,7 +1361,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329122511160006",
     "namaAyah": "RIADI",
     "namaIbu": "NUNUNG APIKAH"
   },
@@ -1479,7 +1374,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329122001170002",
     "namaAyah": "RAJI",
     "namaIbu": "RAMINI"
   },
@@ -1493,7 +1387,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329121607160006",
     "namaAyah": "M. SHOLEH",
     "namaIbu": "RAMINI"
   },
@@ -1507,7 +1400,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329121403170002",
     "namaAyah": "KLIWON",
     "namaIbu": "SUSANTI"
   },
@@ -1521,7 +1413,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3327025505170002",
     "namaAyah": "FATULLOH",
     "namaIbu": "PIPI INDAYANI"
   },
@@ -1535,7 +1426,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329123007160004",
     "namaAyah": "DARSONO",
     "namaIbu": "ROMSI'AH"
   },
@@ -1549,7 +1439,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "",
     "namaAyah": "",
     "namaIbu": ""
   },
@@ -1563,7 +1452,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329126704170003",
     "namaAyah": "ANONIM",
     "namaIbu": "NANI HARYANI"
   },
@@ -1577,7 +1465,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329122609170004",
     "namaAyah": "DAMAN HURI RIFKI",
     "namaIbu": "SITI SAODAH"
   },
@@ -1591,7 +1478,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329125010160002",
     "namaAyah": "AMRITI",
     "namaIbu": "DURINAH"
   },
@@ -1605,7 +1491,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329124705170003",
     "namaAyah": "MOH. YUSUF EFENDI",
     "namaIbu": "ALIF MA'LUMATUL KHAERUL BARIYAH"
   },
@@ -1619,7 +1504,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329121008160003",
     "namaAyah": "SUTA",
     "namaIbu": "EMI"
   },
@@ -1633,7 +1517,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "",
     "namaAyah": "",
     "namaIbu": ""
   },
@@ -1647,7 +1530,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329125809160002",
     "namaAyah": "ABIDIN",
     "namaIbu": "SAMROH"
   },
@@ -1661,7 +1543,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329121506160001",
     "namaAyah": "CHOYRUL AMIN NANTO. S",
     "namaIbu": "RATNA SEPTIYANINGSIH"
   },
@@ -1675,7 +1556,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3209034706170001",
     "namaAyah": "JAMALUDIN",
     "namaIbu": "SRI MULYATI"
   },
@@ -1689,7 +1569,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "3",
     "tahunMasuk": "2023",
-    "nik": "3329124401170004",
     "namaAyah": "SLAMET JOKO SEPIANTO",
     "namaIbu": "DEWI YANA"
   },
@@ -1703,7 +1582,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2024",
-    "nik": "3274054809110002",
     "namaAyah": "KUSEN",
     "namaIbu": "PANDAENI"
   },
@@ -1717,7 +1595,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329120309150007",
     "namaAyah": "HASAN BASRI",
     "namaIbu": "ROSIDAH"
   },
@@ -1731,7 +1608,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329126611150001",
     "namaAyah": "FAHMI MUZAQQI",
     "namaIbu": "VIVIH FITRIAWATI"
   },
@@ -1745,7 +1621,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329125705150001",
     "namaAyah": "TOBARI",
     "namaIbu": "WARYUNI"
   },
@@ -1759,7 +1634,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329122710150003",
     "namaAyah": "RUSBAD",
     "namaIbu": "MASNAH"
   },
@@ -1773,7 +1647,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329122207150001",
     "namaAyah": "ANDI MERIDIAN",
     "namaIbu": "FERA SITI KHODIJAH"
   },
@@ -1787,7 +1660,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329126701160003",
     "namaAyah": "FAOZI",
     "namaIbu": "SUHELIYAH"
   },
@@ -1801,7 +1673,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329124809150001",
     "namaAyah": "NURIDIN",
     "namaIbu": "WILYANAH"
   },
@@ -1815,7 +1686,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329124704150004",
     "namaAyah": "AMSORI",
     "namaIbu": "MASRI'AH"
   },
@@ -1829,7 +1699,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329121607150005",
     "namaAyah": "THABRONI",
     "namaIbu": "KHASANAH"
   },
@@ -1843,7 +1712,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329125907150002",
     "namaAyah": "Ahmad Muslih",
     "namaIbu": "JUMROH"
   },
@@ -1857,7 +1725,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329125009150003",
     "namaAyah": "NURKHOHLIS",
     "namaIbu": "WARTI"
   },
@@ -1871,7 +1738,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329126402150003",
     "namaAyah": "KARNO",
     "namaIbu": "WASRIAH"
   },
@@ -1885,7 +1751,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329127004160002",
     "namaAyah": "ANDRI WIDIATMOKO",
     "namaIbu": "INDAH WATI"
   },
@@ -1899,7 +1764,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "",
     "namaAyah": "",
     "namaIbu": ""
   },
@@ -1913,7 +1777,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329122003120001",
     "namaAyah": "RUSTAM",
     "namaIbu": "CARISAH"
   },
@@ -1927,7 +1790,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329121208150003",
     "namaAyah": "SARMAN",
     "namaIbu": "AYU FITRIYAH"
   },
@@ -1941,7 +1803,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329124810150002",
     "namaAyah": "MARIDI",
     "namaIbu": "ROPIKOH"
   },
@@ -1955,7 +1816,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329126210150005",
     "namaAyah": "RATIM",
     "namaIbu": "KHAFIDOH"
   },
@@ -1969,7 +1829,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "",
     "namaAyah": "",
     "namaIbu": ""
   },
@@ -1983,7 +1842,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3209144107150001",
     "namaAyah": "ANTON SUJARWO",
     "namaIbu": "CARINI"
   },
@@ -1997,7 +1855,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329120305160001",
     "namaAyah": "ASRURI",
     "namaIbu": "RODIYAH"
   },
@@ -2011,7 +1868,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329122911150003",
     "namaAyah": "AGUS MIDO MITAKIM",
     "namaIbu": "NOVI IRYANI"
   },
@@ -2025,7 +1881,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329121606160003",
     "namaAyah": "MAULANA DEDE",
     "namaIbu": "CASTINI"
   },
@@ -2039,7 +1894,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329125911150001",
     "namaAyah": "TARJUKI",
     "namaIbu": "TASNIAH"
   },
@@ -2053,7 +1907,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329120207160006",
     "namaAyah": "MUHAMAD HASIM",
     "namaIbu": "KORI'AH"
   },
@@ -2067,7 +1920,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329122407160003",
     "namaAyah": "TARSOMA",
     "namaIbu": "KOMARIYAH"
   },
@@ -2081,7 +1933,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329121007160004",
     "namaAyah": "HARIS",
     "namaIbu": "TOIDAH"
   },
@@ -2095,7 +1946,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329124103170002",
     "namaAyah": "TARBIDIN",
     "namaIbu": "ISWATUN KHASANAH"
   },
@@ -2109,7 +1959,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329126004160003",
     "namaAyah": "",
     "namaIbu": "RIDA SUDYERNA LUMBANTOBING"
   },
@@ -2123,7 +1972,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329121104150003",
     "namaAyah": "SEPUDIN",
     "namaIbu": "TUTI ANISAH"
   },
@@ -2137,7 +1985,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329125004160004",
     "namaAyah": "ADE IRYANTO",
     "namaIbu": "WAKI'AH"
   },
@@ -2151,7 +1998,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329126204160002",
     "namaAyah": "DEDI PURWANTO",
     "namaIbu": "MURDINAH"
   },
@@ -2165,7 +2011,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329125512150001",
     "namaAyah": "YANTO",
     "namaIbu": "WASNI"
   },
@@ -2179,7 +2024,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329121604160004",
     "namaAyah": "HERU HERWANTO",
     "namaIbu": "ELASARI"
   },
@@ -2193,7 +2037,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329126410150002",
     "namaAyah": "MULYADI",
     "namaIbu": "ENI KUSRIYATI"
   },
@@ -2207,7 +2050,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329122712150003",
     "namaAyah": "RANTOSO",
     "namaIbu": "DAMAYANTI"
   },
@@ -2221,7 +2063,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2022",
-    "nik": "3329125212150001",
     "namaAyah": "SULTONI",
     "namaIbu": "APIFAH"
   },
@@ -2235,7 +2076,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "4",
     "tahunMasuk": "2021",
-    "nik": "3329121806150009",
     "namaAyah": "TADI",
     "namaIbu": "SITI ROHANI"
   },
@@ -2249,7 +2089,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329120206140003",
     "namaAyah": "MAKHRUS",
     "namaIbu": "PONINGSIH"
   },
@@ -2263,7 +2102,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329120202140001",
     "namaAyah": "YASIN",
     "namaIbu": "SUMARNI"
   },
@@ -2277,7 +2115,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329125106150003",
     "namaAyah": "WAHIDIN",
     "namaIbu": "UMIASIH"
   },
@@ -2291,7 +2128,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329125106150001",
     "namaAyah": "HERI KRISWANTO",
     "namaIbu": "OOM KOMAENI"
   },
@@ -2305,7 +2141,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3209032406150001",
     "namaAyah": "CAHYADI",
     "namaIbu": "ANGGUN LISTIANI"
   },
@@ -2319,7 +2154,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329120611150004",
     "namaAyah": "WAMIR",
     "namaIbu": "ROANAH"
   },
@@ -2333,7 +2167,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329125802150003",
     "namaAyah": "ROPI'I",
     "namaIbu": "TITIN UNIYATI"
   },
@@ -2347,7 +2180,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329124204140002",
     "namaAyah": "SAHRI ROMADON",
     "namaIbu": "JUNIAH"
   },
@@ -2361,7 +2193,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329126204150002",
     "namaAyah": "ROFIK",
     "namaIbu": "KORIPAH"
   },
@@ -2375,7 +2206,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329122605150004",
     "namaAyah": "ALI MUSTOFA",
     "namaIbu": "ATI NURANI"
   },
@@ -2389,7 +2219,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329120905150004",
     "namaAyah": "JAEDUN",
     "namaIbu": "EPAH MUNIPAH"
   },
@@ -2403,7 +2232,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329124904140001",
     "namaAyah": "JUNAEDI",
     "namaIbu": "DAIROH"
   },
@@ -2417,7 +2245,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3172025808141003",
     "namaAyah": "MARGANI",
     "namaIbu": "INDRI INAYAH"
   },
@@ -2431,7 +2258,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329124506140002",
     "namaAyah": "MOH. YUSUF EFENDI",
     "namaIbu": "ALIF MA'LUMATUL KHAERUL BARIYAH"
   },
@@ -2445,7 +2271,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329120503150002",
     "namaAyah": "OOH FATURRAHMAN",
     "namaIbu": "SITI KUMAEROH"
   },
@@ -2459,7 +2284,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329121506150002",
     "namaAyah": "KHOLIL FERIYANTO",
     "namaIbu": "YUNITA"
   },
@@ -2473,7 +2297,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3504055608140003",
     "namaAyah": "UDI",
     "namaIbu": "QONIATUL MUARIFAH"
   },
@@ -2487,7 +2310,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329126409140007",
     "namaAyah": "MUHAMMAD NUROKHMAN",
     "namaIbu": "DIANA PURNAMASARI"
   },
@@ -2501,7 +2323,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3209117105150002",
     "namaAyah": "RAJUDIN",
     "namaIbu": "WASIAH"
   },
@@ -2515,7 +2336,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329121204150002",
     "namaAyah": "WANDI",
     "namaIbu": "WARI"
   },
@@ -2529,7 +2349,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329120412140004",
     "namaAyah": "MOH NUR SIDIK",
     "namaIbu": "MASRUROH"
   },
@@ -2543,7 +2362,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329120708140002",
     "namaAyah": "ABD. MANAF",
     "namaIbu": "NUR KOMALASARI"
   },
@@ -2557,7 +2375,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329121604150001",
     "namaAyah": "RASMANI",
     "namaIbu": "SRI ASIH"
   },
@@ -2571,7 +2388,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "",
     "namaAyah": "",
     "namaIbu": ""
   },
@@ -2585,7 +2401,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329122605150002",
     "namaAyah": "CAHYONO",
     "namaIbu": "MUTMAINAH"
   },
@@ -2599,7 +2414,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329125108140001",
     "namaAyah": "KASNADI",
     "namaIbu": "LILIS LIDIYA"
   },
@@ -2613,7 +2427,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329122710140005",
     "namaAyah": "SUGIMAN",
     "namaIbu": "CUANI"
   },
@@ -2627,7 +2440,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329121411140004",
     "namaAyah": "TODI ADE",
     "namaIbu": "ROSI ADKHA"
   },
@@ -2641,7 +2453,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329121504150010",
     "namaAyah": "TARMIDI",
     "namaIbu": "IIS SUHAENI"
   },
@@ -2655,7 +2466,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329124712140004",
     "namaAyah": "ABDUL AJIS",
     "namaIbu": "RUSWI"
   },
@@ -2669,7 +2479,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3275011710140013",
     "namaAyah": "RINANTO",
     "namaIbu": "SRI WAHYUNI"
   },
@@ -2683,7 +2492,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329120402150003",
     "namaAyah": "TRESNA",
     "namaIbu": "FATMAWATI"
   },
@@ -2697,7 +2505,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "5",
     "tahunMasuk": "2021",
-    "nik": "3329124204150001",
     "namaAyah": "MOH. IKROM",
     "namaIbu": "KUSNAENI"
   },
@@ -2711,7 +2518,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329122112130001",
     "namaAyah": "SARIP",
     "namaIbu": "FATIMAH"
   },
@@ -2725,7 +2531,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3301041410130005",
     "namaAyah": "ABDUL WARNO",
     "namaIbu": "NURUL AZIZAH"
   },
@@ -2739,7 +2544,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329125303130003",
     "namaAyah": "TIRTO EFENDI",
     "namaIbu": "ELIS SUHERTI"
   },
@@ -2753,7 +2557,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329121208140003",
     "namaAyah": "DARMONO",
     "namaIbu": "KASIROH"
   },
@@ -2767,7 +2570,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329122309140002",
     "namaAyah": "MIFTHAHUDIN",
     "namaIbu": "TASYAENI"
   },
@@ -2781,7 +2583,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329125909130001",
     "namaAyah": "KLIWON",
     "namaIbu": "EMAH"
   },
@@ -2795,7 +2596,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "",
     "namaAyah": "",
     "namaIbu": ""
   },
@@ -2809,7 +2609,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329126705140001",
     "namaAyah": "OMAN SUBKI",
     "namaIbu": "TITIN AYATI"
   },
@@ -2823,7 +2622,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "",
     "namaAyah": "",
     "namaIbu": ""
   },
@@ -2837,7 +2635,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329120207140002",
     "namaAyah": "LUKMAN",
     "namaIbu": "ZAIDAH"
   },
@@ -2851,7 +2648,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329120308130001",
     "namaAyah": "TEGUH GUNAWAN",
     "namaIbu": "DIANA"
   },
@@ -2865,7 +2661,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329120112130002",
     "namaAyah": "BAWON",
     "namaIbu": "SITI MARYATI"
   },
@@ -2879,7 +2674,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329120204140003",
     "namaAyah": "CARSADI",
     "namaIbu": "CARSINI"
   },
@@ -2893,7 +2687,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329126404140003",
     "namaAyah": "GUNARI",
     "namaIbu": "WARTIAH"
   },
@@ -2907,7 +2700,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329121001140001",
     "namaAyah": "MASNURI",
     "namaIbu": "TAISAH"
   },
@@ -2921,7 +2713,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329124306140002",
     "namaAyah": "CACA SUBAWE",
     "namaIbu": "RUKOYAH"
   },
@@ -2935,7 +2726,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329125902140006",
     "namaAyah": "LUKMAN SUBAWEH",
     "namaIbu": "HAYATUN NUFUS"
   },
@@ -2949,7 +2739,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329121111130001",
     "namaAyah": "RUDY YANTO",
     "namaIbu": "WATIAH"
   },
@@ -2963,7 +2752,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329125809130008",
     "namaAyah": "WARID",
     "namaIbu": "SARIAH"
   },
@@ -2977,7 +2765,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329124301140004",
     "namaAyah": "SUNANDI",
     "namaIbu": "SRI NINGSIH"
   },
@@ -2991,7 +2778,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329125011130001",
     "namaAyah": "NUROHIM",
     "namaIbu": "ENI MAELANI"
   },
@@ -3005,7 +2791,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329122604140002",
     "namaAyah": "DEDE DENI",
     "namaIbu": "SRI YANTI"
   },
@@ -3019,7 +2804,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329122112130004",
     "namaAyah": "ABDUL AZIZ",
     "namaIbu": "HIDAYAH"
   },
@@ -3033,7 +2817,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329122710140002",
     "namaAyah": "CASRIPIN",
     "namaIbu": "ULFAH"
   },
@@ -3047,7 +2830,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329125401140002",
     "namaAyah": "HARYANTO",
     "namaIbu": "NURLAELAH"
   },
@@ -3061,7 +2843,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329125204140006",
     "namaAyah": "NURIDIN",
     "namaIbu": "SRI YANTI"
   },
@@ -3075,7 +2856,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329125511130003",
     "namaAyah": "ROJIMIN",
     "namaIbu": "WIDYANINGSIH"
   },
@@ -3089,7 +2869,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329124406140007",
     "namaAyah": "WAHIDIN",
     "namaIbu": "UMIASIH"
   },
@@ -3103,7 +2882,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329125508140001",
     "namaAyah": "SUTONO",
     "namaIbu": "NURAISYAH"
   },
@@ -3117,7 +2895,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329122009130010",
     "namaAyah": "SATARI",
     "namaIbu": "DAAH WIDARI"
   },
@@ -3131,7 +2908,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329121503140001",
     "namaAyah": "EDI TRIYONO",
     "namaIbu": "TURINAH"
   },
@@ -3145,7 +2921,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329120105140002",
     "namaAyah": "WAJID",
     "namaIbu": "ARIKAH"
   },
@@ -3159,7 +2934,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "",
     "namaAyah": "",
     "namaIbu": ""
   },
@@ -3173,7 +2947,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329126805140003",
     "namaAyah": "RASMADI",
     "namaIbu": "DARMI'AH"
   },
@@ -3187,7 +2960,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329124804140001",
     "namaAyah": "CHAERUDIN",
     "namaIbu": "SRI NENTI ADIWIYA NINGSIH"
   },
@@ -3201,7 +2973,6 @@ export const initialStudents = [
     "alamat": "Kedungneng",
     "kelas": "6",
     "tahunMasuk": "2020",
-    "nik": "3329125208130002",
     "namaAyah": "RAMBYAD",
     "namaIbu": "NOVIA SARI"
   }

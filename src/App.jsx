@@ -12,12 +12,19 @@ function usePersistedStudents() {
   const [students, setStudents] = useState(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) return JSON.parse(raw);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        // migration: hapus NIK jika masih ada di data lama (privasi)
+        if (Array.isArray(parsed)) return parsed.map(({ nik, ...rest }) => rest);
+        return parsed;
+      }
     } catch {}
     return initialStudents;
   });
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(students));
+    // pastikan NIK tidak pernah tersimpan lagi
+    const cleaned = students.map(({ nik, ...rest }) => rest);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cleaned));
   }, [students]);
   return [students, setStudents];
 }
@@ -61,7 +68,6 @@ export default function App() {
   const emptyForm = {
     noInduk: "",
     nisn: "",
-    nik: "",
     nama: "",
     jenisKelamin: "Laki-laki",
     tempatLahir: "BREBES",
@@ -84,8 +90,7 @@ export default function App() {
         (s) =>
           s.nama.toLowerCase().includes(q) ||
           s.nisn.includes(q) ||
-          s.noInduk.includes(q) ||
-          (s.nik && s.nik.includes(q))
+          s.noInduk.includes(q)
       );
     }
     return r;
@@ -120,7 +125,8 @@ export default function App() {
   }
   function openEdit(s) {
     setEditing(s.noInduk);
-    setForm({ ...emptyForm, ...s });
+    const { nik, ...clean } = s;
+    setForm({ ...emptyForm, ...clean });
     setShowAdd(true);
   }
   function handleDelete(noInduk) {
@@ -134,19 +140,23 @@ export default function App() {
       notify("Nama, NISN, No Induk wajib diisi");
       return;
     }
+    const { nik, ...cleanForm } = form;
     if (editing) {
-      setStudents((p) => p.map((s) => (s.noInduk === editing ? { ...s, ...form } : s)));
+      setStudents((p) => p.map((s) => {
+        const { nik: _nik, ...rest } = s;
+        return s.noInduk === editing ? { ...rest, ...cleanForm } : rest;
+      }));
       notify("Data diperbarui");
     } else {
-      if (students.some((s) => s.noInduk === form.noInduk)) {
+      if (students.some((s) => s.noInduk === cleanForm.noInduk)) {
         notify("No Induk sudah ada");
         return;
       }
-      if (students.some((s) => s.nisn === form.nisn)) {
+      if (students.some((s) => s.nisn === cleanForm.nisn)) {
         notify("NISN sudah ada");
         return;
       }
-      setStudents((p) => [{ ...form }, ...p]);
+      setStudents((p) => [{ ...cleanForm }, ...p]);
       notify("Siswa ditambahkan");
     }
     setShowAdd(false);
@@ -179,7 +189,6 @@ export default function App() {
         const idx = {
           nama: header.findIndex((h) => h.includes("nama")),
           nisn: header.findIndex((h) => h.includes("nisn")),
-          nik: header.findIndex((h) => h.includes("nik")),
           tempat: header.findIndex((h) => h.includes("tempat")),
           tanggal: header.findIndex((h) => h.includes("tanggal")),
           jk: header.findIndex((h) => h.includes("kelamin") || h.includes("jk")),
@@ -213,7 +222,6 @@ export default function App() {
           imported.push({
             noInduk,
             nisn: nisn || "-",
-            nik: String(r[idx.nik] || "").replace(/'/g, ""),
             nama,
             jenisKelamin: String(r[idx.jk] || "Laki-laki").includes("P") ? "Perempuan" : "Laki-laki",
             tempatLahir: String(r[idx.tempat] || "BREBES"),
@@ -247,7 +255,6 @@ export default function App() {
         No: i + 1,
         "Nama Lengkap": s.nama,
         NISN: s.nisn,
-        NIK: s.nik ? `'${s.nik}` : "",
         "Tempat Lahir": s.tempatLahir,
         "Tanggal Lahir": s.tanggalLahir,
         "Jenis Kelamin": s.jenisKelamin,
@@ -266,8 +273,8 @@ export default function App() {
 
   function handleDownloadTemplate() {
     const ws = XLSX.utils.aoa_to_sheet([
-      ["No", "Nama Lengkap", "NISN", "NIK", "Tempat Lahir", "Tanggal Lahir", "Jenis Kelamin", "Nama Ayah", "Nama Ibu", "No Induk", "Kelas", "Alamat", "Tahun Masuk"],
-      [1, "CONTOH NAMA", "3184581635", "3329120101180001", "BREBES", "2018-11-02", "Laki-laki", "Nama Ayah", "Nama Ibu", "111233290134250001", "1", "Kedungneng", "2025"],
+      ["No", "Nama Lengkap", "NISN", "Tempat Lahir", "Tanggal Lahir", "Jenis Kelamin", "Nama Ayah", "Nama Ibu", "No Induk", "Kelas", "Alamat", "Tahun Masuk"],
+      [1, "CONTOH NAMA", "3184581635", "BREBES", "2018-11-02", "Laki-laki", "Nama Ayah", "Nama Ibu", "111233290134250001", "1", "Kedungneng", "2025"],
     ]);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "TEMPLATE");
@@ -515,7 +522,6 @@ export default function App() {
                         <div className="text-xs font-mono text-gray-600">
                           NISN: {s.nisn} • Induk: {s.noInduk}
                         </div>
-                        {s.nik && <div className="text-[11px] font-mono text-gray-400">NIK: {s.nik}</div>}
                       </td>
                       <td className="p-3">
                         <div className="text-xs font-medium">{s.tempatLahir}</div>
@@ -631,10 +637,7 @@ export default function App() {
                 </div>
               </div>
 
-              <label className="text-xs font-semibold">
-                NIK (16 digit)
-                <input value={form.nik} onChange={(e) => setForm({ ...form, nik: e.target.value })} placeholder="3329..." className="mt-1 w-full border rounded-lg px-3 py-2.5 text-sm font-mono" />
-              </label>
+
               <label className="text-xs font-semibold">
                 Kelas
                 <select value={form.kelas} onChange={(e) => setForm({ ...form, kelas: e.target.value })} className="mt-1 w-full border rounded-lg px-3 py-2.5 text-sm">

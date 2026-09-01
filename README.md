@@ -11,7 +11,7 @@ Yayasan Pendidikan Islam Jamiyatul Falah • Jl. Pusponegoro No.62 Kedungneng, L
 
 ## ✨ Fitur
 
-- **CRUD Siswa** lengkap: NISN, No Induk (18 digit NSM), NIK, Nama, TTL, Alamat, Kelas 1-6, Ortu, Foto 3×4
+- **CRUD Siswa** lengkap: NISN, No Induk (18 digit NSM), Nama, TTL, Alamat, Kelas 1-6, Ortu, Foto 3×4 — **NIK dihapus dari sistem & kartu demi privasi**
 - **Import Excel massal** (`DATA SISWA MIJAFA.xlsx` & `DATABASE SISWA 2025-2026.xlsx` kompatibel) + validasi header fleksibel
 - **Export Excel** & **Download Template** import
 - **Desain Kartu CR80 (85.6×54mm)** depan-belakang: header Yayasan hijau `#0e7a4b` + emas `#f4b400`, foto, QR Code (NISN|NoInduk), tata tertib, TTD Kepala Madrasah
@@ -121,13 +121,13 @@ kartu-siswa-mijafa/
 
 - `Documents/DATA SISWA/DATA SISWA MI JAMIYATUL FALAH KEDUNGNENG.xlsx` (No, Nama, Tempat, Tanggal, Kelas, JK)
 - `Documents/DATA SISWA/DATABASE SISWA 2025-2026.xlsx` (NO INDUK, NISN, NAMA, KELAMIN, Tempat/Tgl Lahir, ALAMAT, KELAS, TAHUN MASUK)
-- `Documents/DATA SISWA/DATA SISWA MIJAFA.xlsx` (+ NISN, NIK, Nama Ayah/Ibu)
+- `Documents/DATA SISWA/DATA SISWA MIJAFA.xlsx` (+ NISN, Nama Ayah/Ibu) — kolom NIK sudah dihapus
 - Logo: `FILE NAPISAH/LOGO MI/LOGO MI JAFA.jpg` & `logo yayasan.jpg`
 - Kop: `kop mijafa.docx` → Yayasan, MI, Akreditasi B, alamat, telp, email
 
 ## 📄 Lisensi
 
-MIT — Bebas dipakai internal MI JAMIYATUL FALAH KEDUNGNENG. Untuk publikasi, mohon anonimkan NIK/NISN siswa.
+MIT — Bebas dipakai internal MI JAMIYATUL FALAH KEDUNGNENG. Untuk publikasi, mohon anonimkan NISN siswa. NIK tidak disimpan di sistem.
 
 ---
 
